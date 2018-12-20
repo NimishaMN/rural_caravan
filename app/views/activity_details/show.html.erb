@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<p>
+	<b>Work: </b>
+	<%= @activity_detail.work_detail.name %>
+</p>
+
+<p>
+	<b>Team Size: </b>
+	<%= @activity_detail.team_size %>
+</p>
+
+<p>
+	<b>Date: </b>
+	<%= @activity_detail.date %>
+</p>
+
+<p>
+	<b>Amount of work done: </b>
+	<%= @activity_detail.amount_of_work %>
+</p>
+
+<p>
+	<b>Expense: </b>
+	<%= @activity_detail.expense %>
+</p>
+
+<p>
+	<b>Revenue: </b>
+	<%= @activity_detail.revenue %>
+</p>
+
+<p>
+	<b>Income: </b>
+	<%= @activity_detail.income %>
+</p>
+
+<%= link_to 'Edit', edit_activity_detail_path(@activity_detail) %> |
+<%= link_to 'Back', activity_details_path %>

@@ -1,0 +1,51 @@
+<%= form_with(model: activity_detail, local: true) do |f| %>
+  <% if activity_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(activity_detail.errors.count, "error") %> prohibited this activity_detail from being saved:</h2>
+
+      <ul>
+      <% activity_detail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :work_detail %><br>
+    <%= f.collection_select :work_detail_id, WorkDetail.order(:name), :id,:name %>
+  </div>
+  <div class="field">
+    <%= f.label :team_size %><br>
+    <%= f.text_field :team_size %>
+  </div>
+
+  <div class="field">
+    <%= f.label :choose_employees %>
+    <%= f.collection_select :employee_id, Employee.order(:name), :id,:name %>
+    
+  </div>
+
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.text_field :date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amount_of_work %><br>
+    <%= f.text_field :amount_of_work %>
+  </div>
+
+  <div class="field">
+    <%= f.label :expense %><br>
+    <%= f.text_field :expense %>
+  </div>
+
+  <div class="field">
+    <%= f.label :revenue %><br>
+    <%= f.text_field :revenue %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

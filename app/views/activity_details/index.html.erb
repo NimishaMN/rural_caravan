@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Activity Details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th>Acivity</th>
+      <th>Team size</th>
+      <th>Date</th>
+      <th>Work done</th>
+    </tr>
+    <% @activity_details.each do |activity_detail| %>
+      <tr>
+        <td><%= activity_detail.work_detail.name%></td>
+        <td><%= activity_detail.team_size%></td>
+        <td><%= activity_detail.date%></td>
+        <td><%= activity_detail.amount_of_work%></td>
+        <td><%= link_to 'Show', activity_detail %></td>
+        <td><%= link_to 'Edit', edit_activity_detail_path(activity_detail) %></td>
+        <td><%= link_to 'Destroy', activity_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Activity Detail', new_activity_detail_path %>
