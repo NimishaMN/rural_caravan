@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
   resources :activity_details
   resources :work_details
   resources :employees

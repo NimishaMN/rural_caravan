@@ -1,0 +1,29 @@
+
+
+<div class="container">    
+ 
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">chart</div>
+        <div class="panel-body"><%= line_chart  Employee.group(:created_at).count, colors: ["#b00", "#666"]%></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading">Pi chart</div>
+        <div class="panel-body">
+          <%= pie_chart  Employee.group(:created_at).count %>
+		</div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading">Column Chart</div>
+        <div class="panel-body"><%= column_chart  Employee.group(:created_at).count %></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+
+</div><br><br>
