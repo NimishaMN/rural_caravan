@@ -30,8 +30,8 @@ class ActivityDetailsController < ApplicationController
   # POST /activity_details.json
   def create
     params.permit!
-    params.except(:employee_id)
-    @activity_detail = ActivityDetail.new(params[:activity_detail])
+    @activity_detail = ActivityDetail.new(params)
+    
     @activity_detail.income = @activity_detail.revenue - @activity_detail.expense
     activity_employee = EmployeeActivity.new()
     activity_employee.employee_id = @activity_detail.employee_id
