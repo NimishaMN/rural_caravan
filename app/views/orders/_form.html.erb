@@ -55,6 +55,29 @@
       <th width='5%'></th>
     </tr>
   </thead>
+  <tbody>
+  <% @order.order_line_items.each_with_index do |order_line_item, index| %>
+    <tr>
+      <td>
+        <%= select_tag "order[order_line_items_attributes][#{index}][product_id]", options_from_collection_for_select(@to_accounts, :id, :name,:selected => order_line_item.product_id ), :include_blank => true,:"data-placeholder" => "Choose a product", :"data-index" => index , :style=>"width:150px;"%>
+      </td>
+      <td>
+        <%= text_area_tag "order[order_line_items_attributes][#{index}][description]",order_line_item.description, :class => "form-control bg-focus", :id => 'description',:rows =>1, :cols => 10 %>
+      </td>
+
+      <td>
+        <%= text_field_tag "order[order_line_items_attributes][#{index}][quantity]",order_line_item.quantity, :class => "form-control bg-focus text-right", :onkeydown => "return numbersOnly(event);", :id => 'quantity', :maxlength => 18, 'data-index' => index %>
+      </td>
+      <td>
+        <%= text_field_tag "order[order_line_items_attributes][#{index}][unit_rate]",order_line_item.unit_rate, :class => 'form-control bg-focus text-right', :id => 'unit_cost', :onkeydown => "return numbersOnly(event);", :maxlength => 18 %>
+      </td>
+      <td align='right'>
+        <%= hidden_field_tag "order[order_line_items_attributes][#{index}][amount]", order_line_item.amount, :id => 'total' %>
+        <span id="amount">0.0</span>
+      </td>
+    </tr>
+    <%end%>
+  </tbody>
 
   <div class="form-group">
     <div class="actions col-lg-3">
