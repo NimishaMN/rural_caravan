@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_22_084653) do
+ActiveRecord::Schema.define(version: 2019_01_20_094824) do
 
   create_table "activity_details", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "work_detail_id", null: false
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 2018_12_22_084653) do
     t.integer "expense"
     t.integer "revenue"
     t.integer "income"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "businesses", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,6 +47,35 @@ ActiveRecord::Schema.define(version: 2018_12_22_084653) do
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_line_items", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "product_id"
+    t.decimal "quantity", precision: 10, scale: 2
+    t.decimal "unit_rate", precision: 18, scale: 2
+    t.decimal "tax", precision: 10
+    t.decimal "amount", precision: 18, scale: 2
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "order_number"
+    t.date "record_date"
+    t.date "order_date"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "unit_of_measure"
+    t.integer "business_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

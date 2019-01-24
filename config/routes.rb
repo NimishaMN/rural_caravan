@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :order_line_items
+  resources :businesses
+  resources :products
+  resources :orders
   resources :customers
   resources :activity_details
   resources :work_details
