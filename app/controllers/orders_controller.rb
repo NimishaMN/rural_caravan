@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
   def new
     @customers = Customer.all
     @order = Order.new
+    
   end
 
   # GET /orders/1/edit
