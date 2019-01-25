@@ -11,6 +11,9 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require bootstrap
+//= require bootstrap-tour.min.js
+//= require datepicker/bootstrap-datepicker.js
 //= require activestorage
 //= require turbolinks
 //= require_tree .
