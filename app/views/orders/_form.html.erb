@@ -1,0 +1,87 @@
+<%= form_with(model: order, local: true) do |f| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-group">
+      <div class="col-lg-3">
+        <%= f.label :order_number,"Voucher Number", :class=>'control-label-required' %>
+        <%= f.text_field :order_number, :class => 'form-control bg-focus' %>
+      </div>
+      <div class='col-lg-1'></div>
+      <div class="col-lg-3"></div>
+      <div class='col-lg-1'></div>
+      <div class="col-lg-3"></div>
+    </div>
+
+    <div class='form-group'>
+      <div class='col-lg-3'>
+        <label  class="control-label-required">Customer Name</label>
+        <div class='input-group'>
+          <%= f.select(:customer_id, options_from_collection_for_select(@customers, "id", "name", params[:customer_id].to_i),{:prompt => 'Type to select'},{:style => "width:200px;"}) %>
+         </div>
+      </div>
+      <div class='col-lg-1'></div>
+
+      <div class='col-lg-3'>
+        <%= f.label :Order_date,("Order Date"), :class=>'control-label'%>
+        <%= f.text_field :order_date, :class => 'form-control bg-focus', :style=>"width:120px;" %>
+      </div>
+      <div class='col-lg-1'></div>
+
+      <div class='col-lg-3'>
+        <%= f.label :Record_date,  :class=>"control-label-required"  %>
+        <%= f.text_field :record_date, :class => 'form-control bg-focus', :style=>"width:120px;" %>
+      </div>
+
+    </div>
+
+    <table class="table table-striped b-t text-small order-line" id="order_line_items">
+  <thead>
+    <tr>
+      <th width='19%'><label class="control-label-required">Item</label></th>
+      <th width='19%'>Description</th>
+      <th width='12%'><label class="control-label-required">Qty</label></th>
+      <th width='12%'><label class="control-label-required">Unit Cost</label></th>
+      <th width='22%'><label class="control-label-required">Amount </label></th>
+      <th width='5%'></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @order.order_line_items.each_with_index do |order_line_item, index| %>
+    <tr>
+      <td>
+        <%= select_tag "order[order_line_items_attributes][#{index}][product_id]", options_from_collection_for_select(@to_accounts, :id, :name,:selected => order_line_item.product_id ), :include_blank => true,:"data-placeholder" => "Choose a product", :"data-index" => index , :style=>"width:150px;"%>
+      </td>
+      <td>
+        <%= text_area_tag "order[order_line_items_attributes][#{index}][description]",order_line_item.description, :class => "form-control bg-focus", :id => 'description',:rows =>1, :cols => 10 %>
+      </td>
+
+      <td>
+        <%= text_field_tag "order[order_line_items_attributes][#{index}][quantity]",order_line_item.quantity, :class => "form-control bg-focus text-right", :onkeydown => "return numbersOnly(event);", :id => 'quantity', :maxlength => 18, 'data-index' => index %>
+      </td>
+      <td>
+        <%= text_field_tag "order[order_line_items_attributes][#{index}][unit_rate]",order_line_item.unit_rate, :class => 'form-control bg-focus text-right', :id => 'unit_cost', :onkeydown => "return numbersOnly(event);", :maxlength => 18 %>
+      </td>
+      <td align='right'>
+        <%= hidden_field_tag "order[order_line_items_attributes][#{index}][amount]", order_line_item.amount, :id => 'total' %>
+        <span id="amount">0.0</span>
+      </td>
+    </tr>
+    <%end%>
+  </tbody>
+
+  <div class="form-group">
+    <div class="actions col-lg-3">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>
