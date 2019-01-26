@@ -14,6 +14,8 @@
 //= require bootstrap
 //= require bootstrap-tour.min.js
 //= require datepicker/bootstrap-datepicker.js
+//= require highcharts
+//= require chartkick
 //= require activestorage
 //= require turbolinks
 //= require_tree .
