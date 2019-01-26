@@ -7,9 +7,7 @@
         </div>
         <div class="col-lg-8 m-t-large" align="right">
           <div class="btn-group">
-            <button  onclick="location.href= '<%= new_employee_path %>"; class="btn btn-success btn-lg" > <i class="icon-plus"> </i>Add New Employee</button>
-            <button class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown">
-              <span class="caret"></span><i></i>
+            <button  onclick="location.href= '<%= new_employee_path %>'"; class="btn btn-success btn-lg" > <i class="icon-plus"> </i>Add New Employee</button>
             </button>
          </div>
         </div>
@@ -31,7 +29,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% if @customers.blank? %>
+                    <% if @employees.blank? %>
                         <%= render :partial=>"/shared/no_data_found"%>
                       <% else %>
 <% @employees.each do |employee| %>
