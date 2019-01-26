@@ -34,7 +34,7 @@
                       <% else %>
 <% @employees.each do |employee| %>
       <tr>
-        <td><%= employee.name%></td>
+        <td><%= link_to employee.name, employee%></td>
         <td></td>
         <td></td>
         <td></td>

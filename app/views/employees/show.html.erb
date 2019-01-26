@@ -1,8 +1,53 @@
-<p id="notice"><%= notice %></p>
-<p>
-	<b>Name: </b>
-	<%= @employee.name %>
-</p>
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<div class="content">
+<section id="content">
+  <section class="main padder">
+    <div class="row">
+      <div class="col-lg-7">
+        <h2><span class="glyphicon glyphicon-user"></span> <%= @employee.name %></h2>
+      </div>
+      <div class="col-lg-5 m-t-large" align="right">
+        <%= link_to raw("<i class='icon-mail-reply'></i>Back"), employees_url, :class=>'btn  btn-default btn-lg' %>
+        <p></p>
+      </div>  
+    </div>
+    <div class="row">
+      <!-- Address section -->
+      <div class="col-sm-3">
+        <section class="panel bg-light">
+          <div class="panel-body">
+            <div class="text-center clearfix ">
+            
+              <div class="bg-light padder padder-v">
+                <div class="bg-light padder padder-v">
+               
+                </div>
+                <div class="edit_picture">
+                  <section class="panel">
+                    <header class="panel-heading"><strong>Upload Picture</strong></header>
+                    <div class="panel-body">
+                      
+                    </div>
+                  </section>
+                </div>
+                <div class="remove_picture">
+                  <section class="panel">
+                    <header class="panel-heading"><strong>Remove Picture</strong></header>
+                    <div class="panel-body">
+                     
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <p><strong>Username:</strong> <%= @employee.name %></p>
+            <p><strong>Contact:</strong> </p>
+            <p><strong>Email:</strong> </p><br>
+            
+          </div><!-- panel body ends--> 
+        </section>  
+      </div><!-- Address section ends-->
+  
+    </div>    
+  </section>
+</section>
+</div>
