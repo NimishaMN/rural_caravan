@@ -1,32 +1,32 @@
-<%= form_with(model: customer, local: true) do |f| %>
-  <% if customer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+<%= form_for(@customer, local: true) do |f| %>
+  <div class="row">
+    <div class="col-lg-12">
+      <section class="panel">
+        <div class="panel-body">
+          <div class="form-group">
+  
+            <div class="field">
+              <%= f.label :name %><br>
+              <%= f.text_field :name %>
+            </div>
 
-      <ul>
-      <% customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+            <div class="field">
+              <%= f.label :phone_number %><br>
+              <%= f.text_field :phone_number %>
+            </div>
+
+            <div class="field">
+              <%= f.label :email %><br>
+              <%= f.text_field :email %>
+            </div>
+
+            <div class="col-lg-8 col-lg-offset-4" id="submit">
+              <button class="btn btn-success">Save</button> 
+              <a class="btn btn-default" href="/employees">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>

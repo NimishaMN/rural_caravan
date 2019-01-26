@@ -1,14 +1,21 @@
+<%= form_for(@employee, local: true) do |f| %>
 <div class="row">
   <div class="col-lg-12">
     <section class="panel">
       <div class="panel-body">
           <div class="form-group">
-                <div class="col-lg-8 col-lg-offset-4" id="submit">
-                  <button class="btn btn-success">Save</button> 
-                  <a class="btn btn-default" href="/employees">Cancel</a>
-                </div>
-              </div>
+            <div class="field">
+              <%= f.label :name %><br>
+              <%= f.text_field :name %>
+            </div>
+            
+            <div class="col-lg-8 col-lg-offset-4" id="submit">
+              <button class="btn btn-success">Save</button> 
+              <a class="btn btn-default" href="/employees">Cancel</a>
+            </div>
+          </div>
       </div>
     </section>
   </div>
 </div>
+<%end%>
