@@ -1,13 +1,19 @@
-<p id="notice"><%= notice %></p>
-<p>
-	<b>Work: </b>
-	<%= @work_detail.name %>
-</p>
+<div class="content">
+<section id="content">
+  <section class="main padder">
+    <div class="row">
+      <div class="col-lg-7">
+        <h2><span class="glyphicon glyphicon-user"></span> <%= @work_detail.name %></h2>
+      </div>
+      <div class="col-lg-5 m-t-large" align="right">
+        <%= link_to raw("<i class='icon-mail-reply'></i>Back"), work_details_url, :class=>'btn  btn-default btn-lg' %>
+        <p></p>
+      </div>  
+    </div>
 
 <p>
 	<b>Unit of measure: </b>
 	<%= @work_detail.unit_of_measure %>
 </p>
 
-<%= link_to 'Edit', edit_work_detail_path(@work_detail) %> |
-<%= link_to 'Back', work_details_path %>
+<%= link_to 'Edit', edit_work_detail_path(@work_detail) %> 
