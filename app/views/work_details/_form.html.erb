@@ -5,6 +5,10 @@
         <div class="panel-body">
           <div class="form-group">
             <div class="field">
+              <%= f.label :business %><br>
+              <%= f.collection_select :business_id, Business.order(:name), :id,:name %>
+            </div>
+            <div class="field">
               <%= f.label :name %><br>
               <%= f.text_field :name %>
             </div>
