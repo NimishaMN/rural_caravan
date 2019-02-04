@@ -10,7 +10,11 @@
   </head>
 
   <body>
-    <%= render :partial => "shared/basic_header" %>
+    <%= render "layouts/alerts" %>
+    
     <%= yield %>
   </body>
+
+  <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
 </html>

@@ -16,9 +16,9 @@ development:
   <<: *default
   database: rural_management
   username: root
-  password: password
-  variables:
-    sql_mode: TRADITIONAL
+  password: admin
+  # variables:
+    # sql_mode: TRADITIONAL
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
