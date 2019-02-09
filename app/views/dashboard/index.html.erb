@@ -1,34 +1,90 @@
 <div class="content">
- <div class="panel-group">
- 	<div class="row">
- 		<div class="col-lg-4">
- 			<%= render :partial=> "activity"%>
- 		</div>
- 		<div class="col-lg-4">
- 			<%= render :partial=> "employee"%>
- 		</div>
- 		<div class="col-lg-">
- 				<div class="panel panel-info">
- 		         <div class="panel-heading"><h4>Income & Expense</h4></div>
- 		          <div class="panel-body">
- 		 <div class="progress">
-               <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                Income
-               </div>
-          </div>
-           <div class="progress">
-               <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                Expense
-               </div>
-          </div>
-      </div>
-  </div>
-</div>
- 		</div>
- 	  </div>
- 	  <div class="row">
- 	  	
- 	  </div>
-      
-  </div> 
+   <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+
+                            <div class="header">
+                                <h4 class="title">Email Statistics</h4>
+                                <p class="category">Last Campaign Performance</p>
+                            </div>
+                            <div class="content">
+                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+
+                                <div class="footer">
+                                    <div class="legend">
+                                        <i class="fa fa-circle text-info"></i> Open
+                                        <i class="fa fa-circle text-danger"></i> Bounce
+                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Activity</h4>
+                                <p class="category">24 Hours performance</p>
+                            </div>
+                            <div class="content">
+                               <%= render :partial=> "activity"%>
+                                
+                                <div class="footer">
+                                    <div class="legend">
+                                        <i class="fa fa-circle text-info"></i> Open
+                                        <i class="fa fa-circle text-danger"></i> Click
+                                        <i class="fa fa-circle text-warning"></i> Click Second Time
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-history"></i> Updated 3 minutes ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                  
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Empolyees</h4>
+                               
+                            </div>
+                            <div class="content">
+                               <%= render :partial=> "employee"%>
+                                
+                                <div class="footer">
+                                    <div class="legend">
+                                        <i class="fa fa-circle text-info"></i> Open
+                                        <i class="fa fa-circle text-danger"></i> Click
+                                        <i class="fa fa-circle text-warning"></i> Click Second Time
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-history"></i> Updated 3 minutes ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-6">
+                        <div class="card ">
+                            <div class="header">
+                                <h4 class="title">Tasks</h4>
+                                <p class="category">Backend development</p>
+                            </div>
+                           
+                        </div>
+                     </div>
+
+   
+ </div>
 </div>

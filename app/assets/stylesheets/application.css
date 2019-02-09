@@ -11,7 +11,10 @@
  * It is generally better to create a new file per style scope.
  *
  *= require bootstrap
- *= require style
- *= require_tree .
+ *= require	bootstrap.min
+ *= require animate.min
+ *= require pe-icon-7-stroke
+ *= require light-bootstrap-dashboard
+ *= require_tree.
  *= require_self
  */

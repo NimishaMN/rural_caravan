@@ -50,9 +50,14 @@ ActiveRecord::Schema.define(version: 2019_01_28_151049) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "employee_activities", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "employee_activity", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "employee_id", null: false
-    t.integer "activity_details_id"
+    t.integer "activity_detail_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,13 +87,9 @@ ActiveRecord::Schema.define(version: 2019_01_28_151049) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "customer_id", null: false
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "unit_of_measure"
-    t.integer "business_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,7 +99,6 @@ ActiveRecord::Schema.define(version: 2019_01_28_151049) do
     t.string "unit_of_measure"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "business_id"
   end
 
 end
