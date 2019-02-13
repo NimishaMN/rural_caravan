@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :billings
   #for user side
   get 'dashboard/index'
   resources :order_line_items
