@@ -16,4 +16,6 @@
 //= require datepicker/bootstrap-datepicker.js
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require_tree
+//= require Chart.bundle
+//= require chartkick

@@ -29,11 +29,12 @@ class ActivityDetailsController < ApplicationController
   # POST /activity_details
   # POST /activity_details.json
   def create
+    p params
     params.permit!
     @activity_detail = ActivityDetail.new(params)
     
     @activity_detail.income = @activity_detail.revenue - @activity_detail.expense
-    activity_employee = EmployeeActivity.new()
+    activity_employee = EmployeeActivity.new(params)
     activity_employee.employee_id = @activity_detail.employee_id
     activity_employee.activity_detail_id = @activity_detail.activity_detail_id
     activity_employee.save
