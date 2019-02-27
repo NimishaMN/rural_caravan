@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
   
+  # devise_for :users
+
+  # devise_for :users, controllers: {registrations: 'users/registrations'}, path_names: { sign_in: 'login',
+  #   sign_out: 'logout', password: 'secret', confirmation: 'verification',
+  #   unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }, as: ''
+
+  devise_for :users, :skip => [:sessions]
+    as :user do
+  get 'sign-in' => 'devise/sessions#new', :as => :new_user_session
+  post 'sign-in' => 'devise/sessions#create', :as => :user_session
+  delete 'sign-out' => 'devise/sessions#destroy', :as => :destroy_user_session
+end
   resources :billings
   #for user side
   get 'dashboard/index'
@@ -11,7 +23,11 @@ Rails.application.routes.draw do
   resources :activity_details
   resources :work_details
   resources :employees
-  root to: 'dashboard#index'
+  # root to: 'users/login'
+
+  devise_scope :user do
+  root to: "devise/sessions#new"
+end
 
   # for admin side
   devise_for :admins
