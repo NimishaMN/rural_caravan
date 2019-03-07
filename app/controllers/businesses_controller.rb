@@ -43,7 +43,7 @@ class BusinessesController < ApplicationController
   def update
     params.permit!
     respond_to do |format|
-      if @business.update(params)
+      if @business.update(params[:business])
         format.html { redirect_to @business, notice: 'Business was successfully updated.' }
         format.json { render :show, status: :ok, location: @business }
       else

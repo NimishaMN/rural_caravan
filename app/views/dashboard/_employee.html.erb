@@ -1,59 +1,14 @@
-
-
  		    
- 		          		<div class="row text-center text-lg-left">
+<div class="row text-center text-lg-left">
+  <% @employees.each do |employee|%>
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <a href="/employees/<%= employee.id %>" class="d-block mb-4 h-30">
+    <%=image_tag("resource.png", class: "img-fluid img-thumbnail")%>
+                      
+      
+      <span><%= employee.name%></span>
+		</a>
+  </div>
+ <%end%>
+</div>
 
-        					<div class="col-lg-3 col-md-4 col-xs-6">
-         						 <a href="#" class="d-block mb-4 h-30">
-            					 <%=image_tag("nimisha.jpg", class: "img-fluid img-thumbnail")%>
-            					
-          						 </a>
-        					</div>
-      					    <div class="col-lg-3 col-md-4 col-xs-6">
-          						 <a href="#" class="d-block mb-4 h-30">
-            					 <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          						 </a>
-        					</div>
-         					<div class="col-lg-3 col-md-4 col-xs-6">
-          						 <a href="#" class="d-block mb-4 h-30">
-            					 <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          				         </a>
-    
-                        	</div>
-                        	<div class="col-lg-3 col-md-4 col-xs-6">
-          						 <a href="#" class="d-block mb-4 h-30">
-            					 <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          				         </a>
-    
-                        	</div>
- 		          		</div>
- 		          		<div class="row text-center text-lg-left">
-
-        					<div class="col-lg-3 col-md-4 col-xs-6">
-         						 <a href="#" class="d-block mb-4 h-30">
-            					 <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          						 </a>
-        					</div>
-      					    <div class="col-lg-3 col-md-4 col-xs-6">
-          						 <a href="#" class="d-block mb-4 h-30">
-            					 <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          						 </a>
-        					</div>
-         					<div class="col-lg-3 col-md-4 col-xs-6">
-          						 <a href="#" class="d-block mb-4 h-30">
-            					 <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          				         </a>
-    
-                        	</div>
-                        	<div class="col-lg-3 col-md-4 col-xs-6">
-          						 <a href="#" class="d-block mb-4 h-30">
-            					 <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          				         </a>
-    
-                        	</div>
- 		          		
- 	       				</div>
- 		
- 			
- 
- 	

@@ -31,10 +31,10 @@ class ActivityDetailsController < ApplicationController
   def create
     p params
     params.permit!
-    @activity_detail = ActivityDetail.new(params)
+    @activity_detail = ActivityDetail.new(params[:activity_detail])
     
     @activity_detail.income = @activity_detail.revenue - @activity_detail.expense
-    activity_employee = EmployeeActivity.new(params)
+    activity_employee = ActivityDetailEmployee.new(params)
     activity_employee.employee_id = @activity_detail.employee_id
     activity_employee.activity_detail_id = @activity_detail.activity_detail_id
     activity_employee.save
@@ -54,7 +54,7 @@ class ActivityDetailsController < ApplicationController
   # PATCH/PUT /activity_details/1.json
   def update
     respond_to do |format|
-      if @activity_detail.update(activity_detail_params)
+      if @activity_detail.update(params[:activity_detail])
         format.html { redirect_to @activity_detail, notice: 'Activity detail was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity_detail }
       else

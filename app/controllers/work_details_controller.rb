@@ -46,6 +46,7 @@ class WorkDetailsController < ApplicationController
   # PATCH/PUT /work_details/1
   # PATCH/PUT /work_details/1.json
   def update
+    params.permit!
     respond_to do |format|
       if @work_detail.update(work_detail_params)
         format.html { redirect_to @work_detail, notice: 'Work detail was successfully updated.' }

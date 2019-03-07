@@ -1,5 +1,5 @@
 class Employee < ApplicationRecord
 	validates :name, :presence => true
 	# has_many :activity_details
-	has_many :employee_activity
+	has_and_belongs_to_many :activity_details
 end

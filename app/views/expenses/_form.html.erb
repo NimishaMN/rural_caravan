@@ -1,0 +1,43 @@
+<%= form_with(model: expense, local: true) do |f| %>
+  <div class="row">
+    <div class="col-lg-12">
+      <section class="panel">
+        <div class="panel-body">
+          <div class="form-group">
+
+            <div class="field">
+              <%= f.label :customer_name %><br>
+              <%= f.collection_select :customer_id, Customer.order(:name), :id,:name %>
+            </div>
+
+            <div class="field">
+              <%= f.label :date %><br>
+              <%= f.text_field :expense_date %>
+            </div>
+
+            <div class="field">
+              <%= f.label :amount %><br>
+              <%= f.text_field :amount %>
+            </div>
+
+            <div class="field">
+              <%= f.label :description %><br>
+              <%= f.text_field :description %>
+            </div>
+
+            <div class="field">
+              <%= f.label :type %><br>
+              <%= select_tag :expense_status, options_for_select(Expense.statuses) %>
+            </div>
+
+
+            <div class="col-lg-8 col-lg-offset-4" id="submit">
+              <button class="btn btn-success">Save</button> 
+              <a class="btn btn-default" href="/expenses">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+<% end %>
