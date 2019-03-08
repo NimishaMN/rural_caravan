@@ -13,7 +13,7 @@
 
   <body>
     <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="<%= image_tag("sidebar-1.jpg") %>">
+    <div class="sidebar" data-color="purple" data-image="<%= image_tag("sidebar.jpg") %>">
 
     <!--
 
@@ -25,7 +25,7 @@
       <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="/dashboard/index" class="simple-text">
-                    Rural Carvan
+                   <%=image_tag("EGramVyapar.png", class: "img-fluid img-thumbnail",:height =>"10" , :width => "200") %>
                 </a>
             </div>
 
@@ -100,17 +100,15 @@
                      <ul class="nav navbar-nav navbar-right">
                         <li>
                            <a href="">
-                               <p><%= current_user.shg_name %></p>
+                               
                             </a>
                         </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <p>
                     Settings
                     <b class="caret"></b>
-                  </p>
-
-                              </a>
+                   </p></a>
                               <ul class="dropdown-menu">
                                 <li><a href="#">Add Images</a></li>
                                 <li><a href="#">Another action</a></li>
@@ -118,15 +116,10 @@
                                 <li><a href="#">Another action</a></li>
                                 <li><a href="#">Something</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li>  <a href="#"><%= check_user_sign_in %></a></li>
                               </ul>
                         </li>
-                        <li>
-                            <a href="#">
-                                <%= check_user_sign_in %>
-                            </a>
-                        </li>
-            <li class="separator hidden-lg"></li>
+             <li class="separator hidden-lg"></li>
                     </ul>
                 </div>
             </div>

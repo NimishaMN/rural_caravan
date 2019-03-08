@@ -33,7 +33,10 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
 gem 'therubyracer'
+#For Multiple select choosen-rails
+gem 'chosen-rails'
 
 #for admin section
 gem 'rails_admin', '~> 1.3'

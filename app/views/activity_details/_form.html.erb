@@ -6,38 +6,42 @@
           <div class="form-group">
   
   <div class="field">
-    <%= f.label :work_detail %><br>
-    <%= f.collection_select :work_detail_id, WorkDetail.order(:name), :id,:name %>
+    <%= f.label :work_detail, :class=>'control-label' %><br>
+    <%= f.collection_select :work_detail_id, WorkDetail.order(:name), :id,:name, :class => 'form-control bg-focus', :style=>"width:'300px';" %>
   </div>
+<!--   <div class="field">
+    <%= f.label :team_size, :class=>'control-label' %><br>
+    <%= f.text_field :team_size, :id => "size", :class => 'form-control bg-focus', :style=>"width:120px;" %>
+  </div> -->
+
   <div class="field">
-    <%= f.label :team_size %><br>
-    <%= f.text_field :team_size %>
+    <%= f.label :select_team, :class=>'control-label-required' %>
+
+    <select class="chosen-select" multiple="true">
+      <%= @employess.each do | emp |%>
+      <option><%= emp.name %></option>
+     <% end %>
+    </select>
   </div>
 
   <div class="field">
-    <%= f.label :choose_employees %>
-    <%= f.collection_select :employee_id, Employee.order(:name), :id,:name %>
-    
+    <%= f.label :date, :class=>'control-label' %><br>
+    <%= f.text_field :date, :class => 'form-control bg-focus', :style=>"width:120px;", :id => "start_date" %>
   </div>
 
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.text_field :date %>
+    <%= f.label :amount_of_work, :class=>'control-label' %><br>
+    <%= f.text_field :amount_of_work, :class => 'form-control bg-focus', :style=>"width:200px;" %>
   </div>
 
   <div class="field">
-    <%= f.label :amount_of_work %><br>
-    <%= f.text_field :amount_of_work %>
+    <%= f.label :expense, :class=>'control-label' %><br>
+    <%= f.text_field :expense, :class => 'form-control bg-focus', :style=>"width:200px;" %>
   </div>
 
   <div class="field">
-    <%= f.label :expense %><br>
-    <%= f.text_field :expense %>
-  </div>
-
-  <div class="field">
-    <%= f.label :revenue %><br>
-    <%= f.text_field :revenue %>
+    <%= f.label :revenue, :class=>'control-label' %><br>
+    <%= f.text_field :revenue, :class => 'form-control bg-focus', :style=>"width:200px;" %>
   </div>
 
             <div class="col-lg-8 col-lg-offset-4" id="submit">
@@ -50,3 +54,10 @@
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+
+
+    
+  
+</script>

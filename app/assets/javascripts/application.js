@@ -10,8 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery_ujs
 //= require rails-ujs
 //= require bootstrap
+//= require chosen-jquery
+//= require scaffold
 //= require bootstrap-tour.min.js
 //= require datepicker/bootstrap-datepicker.js
 //= require activestorage

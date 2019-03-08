@@ -7,4 +7,10 @@ class Order < ApplicationRecord
 	# validates_uniqueness_of :order_number
 	# validates_presence_of :order_line_items
 	# validates_associated :order_line_items, :message => "fields with * are mandatory"
+
+	def self.new_orders(params)
+		order = Order.new
+		order.order_line_items.build
+		order
+	end
 end

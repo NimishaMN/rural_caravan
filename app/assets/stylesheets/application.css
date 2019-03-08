@@ -13,6 +13,7 @@
  *= require bootstrap
  *= require	bootstrap.min
  *= require animate.min
+ *= require chosen
  *= require pe-icon-7-stroke
  *= require light-bootstrap-dashboard
  *= require_tree.

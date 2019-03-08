@@ -20,6 +20,7 @@ class ActivityDetailsController < ApplicationController
   # GET /activity_details/new
   def new
     @activity_detail = ActivityDetail.new
+    @employess = Employee.all
   end
 
   # GET /activity_details/1/edit
