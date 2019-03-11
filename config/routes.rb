@@ -20,6 +20,7 @@ end
   resources :products
   resources :orders
   resources :customers
+  post 'activity_details/status'
   resources :activity_details
   resources :work_details
   resources :employees

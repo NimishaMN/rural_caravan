@@ -3,11 +3,13 @@ class CreateActivityDetails < ActiveRecord::Migration[5.2]
     create_table :activity_details do |t|
     	t.integer :work_detail_id, :null => false
     	t.integer :team_size
-    	t.date :date
-    	t.integer :amount_of_work
-    	t.integer :expense
-    	t.integer :revenue
-    	t.integer :income
+    	t.date :start_date
+      t.date :end_date
+      t.integer :status
+    	# t.integer :amount_of_work
+    	# t.integer :expense
+    	# t.integer :revenue
+    	# t.integer :income
       t.timestamps
     end
   end

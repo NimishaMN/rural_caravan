@@ -31,14 +31,8 @@ class ActivityDetailsController < ApplicationController
   # POST /activity_details.json
   def create
     params.permit!
-    @activity_detail = ActivityDetail.new(params)
-    
-    @activity_detail.income = @activity_detail.revenue - @activity_detail.expense
-    activity_employee = EmployeeActivity.new()
-    activity_employee.employee_id = @activity_detail.employee_id
-    activity_employee.activity_detail_id = @activity_detail.activity_detail_id
-    activity_employee.save
-
+    @activity_detail = ActivityDetail.new(params[:activity_detail])
+  
     respond_to do |format|
       if @activity_detail.save
         format.html { redirect_to @activity_detail, notice: 'Activity detail was successfully created.' }
@@ -53,8 +47,9 @@ class ActivityDetailsController < ApplicationController
   # PATCH/PUT /activity_details/1
   # PATCH/PUT /activity_details/1.json
   def update
+    params.permit!
     respond_to do |format|
-      if @activity_detail.update(activity_detail_params)
+      if @activity_detail.update(params[:activity_detail])
         format.html { redirect_to @activity_detail, notice: 'Activity detail was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity_detail }
       else
@@ -72,6 +67,11 @@ class ActivityDetailsController < ApplicationController
       format.html { redirect_to activity_details_url, notice: 'Activity detail was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def status
+    @activity_detail = ActivityDetail.find(params[:id])
+    @activity_detail.update_attributes(end_date: params[:end_date], status: 1)
   end
 
   private

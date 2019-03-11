@@ -53,7 +53,8 @@
   <% @order.order_line_items.each_with_index do |order_line_item, index| %>
     <tr>
       <td>
-        <%= text_field_tag "product", order_line_item.product_id, :class => "form-control bg-focus text-right", :"data-index" => index , :style=>"width:150px;"%>
+        <%= f.select(:product_id, options_from_collection_for_select(@products, "id", "name", params[:product_id].to_i),{:prompt => 'Type to select'},{:style => "width:200px;"}) %>
+
       </td>
       <td>
         <%= text_area_tag "order[order_line_items_attributes][#{index}][description]",order_line_item.description, :class => "form-control bg-focus", :id => 'description',:rows =>1, :cols => 10 %>

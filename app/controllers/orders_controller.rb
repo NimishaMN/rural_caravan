@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
   def new
     @customers = Customer.all
     @order = Order.new_orders(params)
- 
+    @products = Product.all
   end
 
   # GET /orders/1/edit
@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     params.permit!
-    @order = Order.new(params)
+    @order = Order.new(params[:order])
 
     respond_to do |format|
       if @order.save
@@ -43,8 +43,9 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+    params.permit!
     respond_to do |format|
-      if @order.update(order_params)
+      if @order.update(params[:order])
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else

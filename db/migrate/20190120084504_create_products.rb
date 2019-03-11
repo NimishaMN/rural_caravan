@@ -4,6 +4,8 @@ class CreateProducts < ActiveRecord::Migration[5.2]
 	    t.string  :name, :null => false, :size => 100
 	    t.string  :unit_of_measure, :size => 100
 	    t.integer :business_id
+	    t.decimal :unit_cost, :precision => 18, :scale => 2
+	    t.decimal :unit_price, :precision => 18, :scale => 2
       t.timestamps
     end
   end

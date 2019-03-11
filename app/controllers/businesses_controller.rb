@@ -10,6 +10,9 @@ class BusinessesController < ApplicationController
   # GET /businesses/1
   # GET /businesses/1.json
   def show
+    @business = Business.find(params[:id])
+    @work_details = WorkDetail.where(business_id: @business.id).order(:sequence)
+    @products = Product.where(business_id: @business.id)
   end
 
   # GET /businesses/new

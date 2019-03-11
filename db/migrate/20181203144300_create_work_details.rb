@@ -4,6 +4,7 @@ class CreateWorkDetails < ActiveRecord::Migration[5.2]
     	t.string :name, :null =>false
     	t.string :unit_of_measure
     	t.integer :business_id
+    	t.integer :sequence
       t.timestamps
     end
   end
