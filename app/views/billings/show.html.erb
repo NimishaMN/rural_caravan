@@ -1,4 +1,65 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_billing_path(@billing) %> |
-<%= link_to 'Back', billings_path %>
+<section id="content">
+  <section class="main padder">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2><i class="icon-file-text-alt text"></i>Billing Invoice Detail</h2>
+      </div>
+      <div class="col-lg-6 m-t-large" align="right">
+       
+      </div>  
+    </div>
+    <section class="panel">
+      <div class="panel-body">
+        <div class="row">
+          <!-- Invoice second section -->
+          <div class="col-sm-5">
+            <h4><strong> Customer Name: </strong> <br/>Vishwajit Kolekar</h4>
+         </div>
+         <div class="col-sm-7">
+          <section class="panel">
+            <div class="panel-body">
+              <!-- Invoice basic details -->
+              <div class="col-sm-6">
+                <p><strong> Invoice Number: </strong>1</p>
+                <p><strong> Company Name: </strong> 2</p>
+                <p><strong> Address: </strong> Kolhapur</p>
+              </div>
+            </div>
+            <footer class="panel-footer">
+              <div class="row">
+                <div class="col-sm-6"><i class="icon-calendar"> </i>
+                </div>
+              </div>
+            </footer>
+          </section>
+        </div>
+        <!-- Invoice second section ends-->
+      </div>
+      <div class="col-lg-12">
+        <table class="table table-striped b-t text-small">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Amount</th>
+            </tr>
+          </thead> 
+          <tbody> 
+          <tr>
+            <td>Basic Pack</td>
+            <td>500</td>
+          </tr>
+         </tbody>
+        </table>
+        <div class="form-group">
+          <div class="col-lg-8 col-lg-offset-4">                      
+        <a href="https://test.instamojo.com/@vishukolekar/l991452c21db7494888a716fb0a0e5eaf/" rel="im-checkout" data-behaviour="remote" data-style="dark" data-text="Pay"></a>
+    
+          <a class="btn btn-default" href="/billings">Cancel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+</section>
+ <script src="https://js.instamojo.com/v1/button.js"></script>

@@ -9,17 +9,13 @@
     <%= f.label :work_detail, :class=>'control-label' %><br>
     <%= f.collection_select :work_detail_id, WorkDetail.order(:name), :id,:name, :class => 'form-control bg-focus', :style=>"width:'300px';" %>
   </div>
-<!--   <div class="field">
-    <%= f.label :team_size, :class=>'control-label' %><br>
-    <%= f.text_field :team_size, :id => "size", :class => 'form-control bg-focus', :style=>"width:120px;" %>
-  </div> -->
 
-  <div class="field">
+<div class="field">
     <%= f.label :select_team, :class=>'control-label-required' %>
 
     <select class="chosen-select" multiple="true">
       <%= @employess.each do | emp |%>
-      <option><%= emp.name %></option>
+      <option value="<%= emp.id %>"><%= emp.name %></option>
      <% end %>
     </select>
   </div>
