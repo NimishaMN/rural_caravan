@@ -1,127 +1,120 @@
 <div class="content">
-   <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-6">
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title">Operations Planning</h4>
-                                <div class="content">
-                                  <div class="row text-center text-lg-left">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card ">
+          <div class="header">
+            <h4 class="title">Operations Planning</h4>
+            <div class="content">
+              <div class="row text-center text-lg-left">
 
-                                    <div class="col-lg-4">
+                <div class="col-lg-4">
 
-                                       <a href="/businesses" class="d-block mb-10 h-50">
-                                          <div class="middle">
-                                            <div class="text">
-                                            <h1>3</h1>
-                                            <h3>Business</h3>
-                                            </div>
-                                          </div>
-                                        </a>
-                                        </div>
-                                        <div class="col-lg-4">
-                                        <a href="/work_details" class="d-block mb-10 h-50">
-                                          <div class="middle">
-                                            <div class="text">
-                                            <h1>7</h1>
-                                            <h3>Work</h3>
-                                            </div>
-                                          </div>
-                                        </a>
-                                        </div>
-                                        <div class="col-lg-4">
-                                        <a href="/activity_details" class="d-block mb-10 h-50">
-                                          <div class="middle">
-                                            <div class="text">
-                                            <h1>1</h1>
-                                            <h3>Activity</h3>
-                                            </div>
-                                          </div>
-                                         </a>
-                                    </div>
-                                  </div>
-                                  <br/>
-
-                                  <br/>
-                                <div class="footer">
-                                    <hr>
-                           <br/>
-                                    <div class="stats">
-                                        <i class="fa fa-history"></i> Updated 3 minutes ago
-                                    </div>
-                                </div>
-                            </div>
-                                
-                            </div>
-                           <br/>
-                           <div></div>
-                        </div>
-                     </div>
-
-                     <div class="col-md-6">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Resource Management</h4>
-                               
-                            </div>
-                            <div class="content">
-                               <%= render :partial=> "employee"%>
-                                
-                                <div class="footer">
-                                    
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-history"></i> Updated 3 minutes ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                  <a href="/businesses" class="d-block mb-10 h-50">
+                    <div class="middle">
+                      <div class="text">
+                        <h1><%= @businesses.count %></h1>
+                        <h3>Business</h3>
+                      </div>
                     </div>
-                     
+                  </a>
                 </div>
-                <div class="row">
-                  <div class="col-md-6">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Order Management</h4>
-                                <p class="category">24 Hours performance</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth">
-                                    <%= column_chart Order.group(:created_at).count %>
-                                </div>
-                                <br/>
-                                <div class="footer">
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-history"></i> Updated 3 minutes ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-lg-4">
+                  <a href="/work_details" class="d-block mb-10 h-50">
+                    <div class="middle">
+                      <div class="text">
+                        <h1><%= @work_details.count%></h1>
+                        <h3>Work</h3>
+                      </div>
                     </div>
-                    
+                  </a>
+                </div>
+                <div class="col-lg-4">
+                  <a href="/activity_details" class="d-block mb-10 h-50">
+                    <div class="middle">
+                      <div class="text">
+                        <h1><%= @activity_details.count %></h1>
+                        <h3>Activity</h3>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <br/>
+              <br/>
+              <div class="footer">
+                <hr>
+                <br/>
+                <div class="stats">
+                  <i class="fa fa-history"></i> Updated 3 minutes ago
+                </div>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div></div>
+        </div>
+      </div>
 
-                    <div class="col-md-6">
-                        <div class="card">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Resource Management</h4>
+          </div>
+          <div class="content">
+            <%= render :partial=> "employee"%>
+            <div class="footer">
+              <hr>
+              <div class="stats">
+                <i class="fa fa-history"></i> Updated 3 minutes ago
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Order Management</h4>
+            <p class="category">24 Hours performance</p>
+          </div>
+          <div class="content">
+            <div id="chartPreferences" class="ct-chart ct-perfect-fourth">
+              <%= column_chart Order.group(:created_at).count %>
+            </div>
+            <br/>
+            <div class="footer">
+              <hr>
+              <div class="stats">
+                <i class="fa fa-history"></i> Updated 3 minutes ago
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
 
-                            <div class="header">
-                                <h4 class="title">Performance Monitoring</h4>
-                                <p class="category">Last Campaign Performance</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth">
-                                    <%= column_chart WorkDetail.group(:name).count %>
-                                </div>
-<br/>
-                                <div class="footer">
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-clock-o"></i> 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>   
- </div>
+          <div class="header">
+            <h4 class="title">Performance Monitoring</h4>
+            <p class="category">Last Campaign Performance</p>
+          </div>
+          <div class="content">
+            <div id="chartPreferences" class="ct-chart ct-perfect-fourth">
+              <%= column_chart WorkDetail.group(:name).count %>
+            </div>
+            <br/>
+            <div class="footer">
+              <hr>
+              <div class="stats">
+                <i class="fa fa-clock-o"></i> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>   
+    </div>
+  </div>
 </div>

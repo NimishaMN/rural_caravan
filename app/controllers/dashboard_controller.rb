@@ -1,8 +1,9 @@
 class DashboardController < ApplicationController
   def index
-  	# @activity = Activity.find_by_date(Time.now.to_date)
-  	# p "=================="
-  	# p @activity
+  	
   	@employees = Employee.all
+  	@businesses = Business.all
+  	@work_details = WorkDetail.all
+  	@activity_details = ActivityDetail.all
   end
 end
