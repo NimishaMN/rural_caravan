@@ -42,6 +42,8 @@ gem 'chosen-rails'
 gem 'rails_admin', '~> 1.3'
 gem 'devise'
 
+
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 # For charts

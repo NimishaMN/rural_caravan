@@ -27,7 +27,7 @@
 
       <div class='col-lg-3'>
         <%= f.label :Order_date,("Order Date"), :class=>'control-label'%>
-        <%= f.text_field :order_date, :class => 'form-control bg-focus', :style=>"width:120px;" %>
+        <%= f.text_field :order_date, :class => 'form-control datepicker', :style=>"width:120px;", :id => "order_date"%>
       </div>
       <div class='col-lg-1'></div>
 
@@ -61,15 +61,14 @@
       </td>
 
       <td>
-        <%= text_field_tag "order[order_line_items_attributes][#{index}][quantity]",order_line_item.quantity, :class => "form-control bg-focus text-right", :onkeydown => "return numbersOnly(event);", :id => 'quantity', :maxlength => 18, 'data-index' => index %>
+        <%= text_field_tag "order[order_line_items_attributes][#{index}][quantity]",order_line_item.quantity, :class => "form-control bg-focus text-right",  :id => 'quantity', :maxlength => 18, 'data-index' => index %>
       </td>
       <td>
-        <%= text_field_tag "order[order_line_items_attributes][#{index}][unit_rate]",order_line_item.unit_rate, :class => 'form-control bg-focus text-right', :id => 'unit_cost', :onkeydown => "return numbersOnly(event);", :maxlength => 18 %>
+        <%= text_field_tag "order[order_line_items_attributes][#{index}][unit_rate]",order_line_item.unit_rate, :class => 'form-control bg-focus text-right', :id => 'unit_rate',  :maxlength => 18 %>
       </td>
       <td align='right'>
-        <%= hidden_field_tag "order[order_line_items_attributes][#{index}][amount]", order_line_item.amount, :id => 'total' %>
-        <span id="amount">0.0</span>
-      </td>
+        <%= text_field_tag "order[order_line_items_attributes][#{index}][amount]", order_line_item.amount, :class => 'form-control bg-focus text-right', :id => 'total' %>
+       </td>
     </tr>
     <%end%>
   </tbody>
@@ -85,8 +84,3 @@
     </div>
   </div>
 <% end %>
-
-<script type="text/javascript">
-  $("#order_date").datepicker();
-  
-</script>

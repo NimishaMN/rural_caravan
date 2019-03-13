@@ -17,7 +17,6 @@
 //= require chosen-jquery
 //= require scaffold
 //= require bootstrap-tour.min.js
-//= require datepicker/bootstrap-datepicker.js
 //= require activestorage
 //= require turbolinks
 //= require_tree .
