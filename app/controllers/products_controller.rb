@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+    @business = Business.find(params[:business_id])
     @product = Product.new
   end
 

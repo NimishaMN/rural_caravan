@@ -5,8 +5,9 @@
         <div class="panel-body">
           <div class="form-group">
             <div class="field">
-              <%= f.label :business %><br>
-              <%= f.collection_select :business_id, Business.order(:name), :id,:name %>
+            <%= hidden_field_tag "[business_id]", @business.id %>
+              <%= f.label :product %><br>
+              <%= f.collection_select :product_id, Product.order(:name), :id,:name %>
             </div>
             <div class="field">
               <%= f.label :name %><br>

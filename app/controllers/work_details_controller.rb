@@ -19,6 +19,7 @@ class WorkDetailsController < ApplicationController
 
   # GET /work_details/new
   def new
+    @business = Business.find(params[:business_id])
     @work_detail = WorkDetail.new
   end
 
@@ -33,7 +34,7 @@ class WorkDetailsController < ApplicationController
     @work_detail = WorkDetail.new(params[:work_detail])
 
     respond_to do |format|
-      if @work_detail.save
+      if @work_detail.save!
         format.html { redirect_to @work_detail, notice: 'Work detail was successfully created.' }
         format.json { render :show, status: :created, location: @work_detail }
       else
