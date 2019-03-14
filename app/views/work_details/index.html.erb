@@ -21,6 +21,7 @@
                 <table id="work_details" class="table table-striped m-b-none text-small">
                   <thead>
                     <tr>
+                    <th>Business</th>
       <th>Name</th>
       <th>Unit of Measure</th>
       <th></th>
@@ -34,6 +35,7 @@
                       <% else %>
     <% @work_details.each do |work_detail| %>
       <tr>
+      <td><%= work_detail.business.name %></td>
         <td> <%= work_detail.name %></td>
         <td> <%= work_detail.unit_of_measure %></td>
         <td><%= link_to 'Show', work_detail %></td>

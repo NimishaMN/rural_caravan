@@ -1,0 +1,62 @@
+<div class="content">
+  <section id="content">
+    <section class="main padder">
+      <div class="row">
+        <div class="col-lg-4">
+          <h2><i class="icon-user text"></i></i>Transactions</h2>
+        </div>
+        <div class="col-lg-8 m-t-large" align="right">
+          <div class="btn-group">
+            <button  onclick="location.href= '<%= new_expense_path %>'"; class="btn btn-success btn-lg" > <i class="icon-plus"> </i>Add New Transaction</button>
+            </button>
+         </div>
+        </div>
+      </div>
+ <div class="panel-body">
+                   
+       <div class="row">
+        <div class="col-lg-12"><p></p>
+          <section class="panel">
+           <div class="panel-body">
+              <div class="table-responsive">
+                <table id="expenses" class="table table-striped m-b-none text-small">
+                  <thead>
+                    <tr>
+                      <th>Customer Name</th>
+                      <th>Amount</th>
+                      <th>Description</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if @expenses.blank? %>
+                        <%= render :partial=>"/shared/no_data_found"%>
+                      <% else %>
+
+    <% @expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.customer.name%></td>
+        <td><%= expense.amount%></td>
+        <td><%= expense.description%></td>
+        <td><%= expense.expense_date%></td>
+        <td><%= Expense.statuses.key(expense.expense_status) %></td>
+        <td><%= link_to 'Show', expense %></td>
+        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-center">
+              
+              </div>              
+            </div>  
+          </section>
+        </div>
+      </div>
+   </section>
+   </section>
+  </div>
