@@ -4,7 +4,7 @@
       <section class="panel">
         <div class="panel-body">
           <div class="form-group">
-
+            
     <div class="form-group">
       <div class="col-lg-3">
         <%= f.label :order_number,"Voucher Number", :class=>'control-label-required' %>
@@ -31,11 +31,6 @@
       </div>
       <div class='col-lg-1'></div>
 
-      <div class='col-lg-3'>
-        <%= f.label :Record_date,  :class=>"control-label-required"  %>
-        <%= f.text_field :record_date, :class => 'form-control bg-focus', :style=>"width:120px;" %>
-      </div>
-
     </div>
 
     <table class="table table-striped b-t text-small order-line" id="order_line_items">
@@ -53,7 +48,7 @@
   <% @order.order_line_items.each_with_index do |order_line_item, index| %>
     <tr>
       <td>
-        <%= f.select(:product_id, options_from_collection_for_select(@products, "id", "name", params[:product_id].to_i),{:prompt => 'Type to select'},{:style => "width:200px;"}) %>
+        <%= select_tag("order[order_line_items_attributes][#{index}][product_id]", options_from_collection_for_select(@products, :id, :name,:selected => order_line_item.product_id ),:include_blank => true, :prompt => 'Select product', :"data-index" => index, :style => "width:150px;")  %>
 
       </td>
       <td>
