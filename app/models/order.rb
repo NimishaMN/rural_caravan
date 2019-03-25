@@ -2,6 +2,7 @@ class Order < ApplicationRecord
 	STATUS = {paid: 1, unpaid: 0}
 	has_many :order_line_items, dependent: :destroy
 	belongs_to :customer, foreign_key: :customer_id, optional: true
+	accepts_nested_attributes_for :order_line_items
 
 	# validates_presence_of :order_number, :order_date
 	# validates_uniqueness_of :order_number
@@ -10,6 +11,9 @@ class Order < ApplicationRecord
 
 	def self.new_orders(params)
 		order = Order.new
+		# order.order_number = params[:order_number]
+		# order.record_date = params[:record_date]
+		# order.order_date = params[:order_date]
 		order.order_line_items.build
 		order
 	end
