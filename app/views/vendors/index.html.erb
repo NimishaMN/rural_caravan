@@ -3,49 +3,49 @@
     <section class="main padder">
       <div class="row">
         <div class="col-lg-4">
-          <h2><i class="icon-user text"></i></i>Work Details</h2>
+          <h2><i class="icon-user text"></i></i>Vendors</h2>
         </div>
         <div class="col-lg-8 m-t-large" align="right">
           <div class="btn-group">
-            <button  onclick="location.href= '<%= new_work_detail_path %>'"; class="btn btn-success btn-lg" > <i class="icon-plus"> </i>Add New Work</button>
+            <button  onclick="location.href= '<%= new_vendor_path %>'"; class="btn btn-success btn-lg" > <i class="icon-plus"> </i>Add New Vendor</button>
             </button>
          </div>
         </div>
       </div>
  <div class="panel-body">
+        
 <div class="row">
         <div class="col-lg-12"><p></p>
           <section class="panel">
            <div class="panel-body">
               <div class="table-responsive">
-                <table id="work_details" class="table table-striped m-b-none text-small">
+                <table id="vendors" class="table table-striped m-b-none text-small">
                   <thead>
                     <tr>
-                    <th>Business</th>
-      <th>Name</th>
-      <th>Unit of Measure</th>
+             <th>Name</th>
+      <th>Phone no.</th>
+      <th>Email</th>
       <th></th>
       <th></th>
       <th></th>
     </tr>
-    </thead>
+               </thead>
                   <tbody>
-                    <% if @work_details.blank? %>
+                    <% if @vendors.blank? %>
                         <%= render :partial=>"/shared/no_data_found"%>
                       <% else %>
-    <% @work_details.each do |work_detail| %>
+
+    <% @vendors.each do |vendor| %>
       <tr>
-      <td><%= work_detail.business.name %></td>
-        <td> <%= work_detail.name %></td>
-        <td> <%= work_detail.unit_of_measure %></td>
-        <td><%= link_to 'Show', work_detail %></td>
-        <td><%= link_to 'Edit', edit_work_detail_path(work_detail) %></td>
-        <td><%= link_to 'Delete', work_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= vendor.name %></td>
+        <td><%= vendor.phone_number %></td>
+        <td><%= vendor.email %></td>
+        <td><%= link_to 'Show', vendor %></td>
+        <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
+        <td><%= link_to 'Delete', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
- <% end %>
+  <% end %>
                   </tbody>
                 </table>
               </div>

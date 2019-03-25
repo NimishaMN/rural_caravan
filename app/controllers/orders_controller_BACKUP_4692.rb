@@ -27,8 +27,15 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     params.permit!
+<<<<<<< HEAD
+    @order = Order.new_orders(params)
+    logger.debug"+++++++++++++++++++++#{@order.inspect}"
+    @order.assign_attributes(params[:order])
+
+=======
     @order = Order.new(params[:order])
     @order.user_id = current_user.id
+>>>>>>> 8b767c6074838c146c4294ed287396f10918ff83
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }

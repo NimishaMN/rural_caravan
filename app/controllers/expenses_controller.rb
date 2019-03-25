@@ -27,7 +27,7 @@ class ExpensesController < ApplicationController
     params.permit!
     p params
     @expense = Expense.new(params[:expense])
-    @expense.user_id = 1
+    @expense.user_id = current_user.id
     respond_to do |format|
       if @expense.save!
         format.html { redirect_to @expense, notice: 'Expense was successfully created.' }

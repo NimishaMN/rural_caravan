@@ -39,7 +39,7 @@
         <td><%= activity_detail.date%></td>
         <% if activity_detail.status == 1 %>
           <td><%= activity_detail.date%></td>
-          <td><%= activity_detail.date%></td>
+          <td><%= activity_detail.status_val %></td>
         <%else%>
           <td><%= text_field_tag :end_date %></td>
           <td><%= button_to :status, "activity_details/status?id=#{activity_detail.id}" %></td>

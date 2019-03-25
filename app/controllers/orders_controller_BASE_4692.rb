@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   def create
     params.permit!
     @order = Order.new(params[:order])
-    @order.user_id = current_user.id
+
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }

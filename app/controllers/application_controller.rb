@@ -16,4 +16,12 @@ class ApplicationController < ActionController::Base
   		"/dashboard/index"
   	end
   end
+
+  def user_from_subdomain
+    if session[:user_id].present?
+      @user ||= User.find(session[:user_id])
+    else
+      redirect_to(controller: :login, action: :session_timeout)
+    end  
+  end
 end

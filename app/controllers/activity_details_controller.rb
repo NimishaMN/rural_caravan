@@ -32,7 +32,7 @@ class ActivityDetailsController < ApplicationController
   def create
     params.permit!
     @activity_detail = ActivityDetail.new(params[:activity_detail])
-  
+    @activity_detail.user_id = current_user.id
     respond_to do |format|
       if @activity_detail.save
         format.html { redirect_to @activity_detail, notice: 'Activity detail was successfully created.' }

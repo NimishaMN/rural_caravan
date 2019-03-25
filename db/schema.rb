@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 201901200845046) do
+ActiveRecord::Schema.define(version: 20181204160324567) do
 
   create_table "activity_details", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "work_detail_id", null: false
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 201901200845046) do
     t.integer "income"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+  end
+
+  create_table "activity_details_employees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.bigint "activity_detail_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["activity_detail_id"], name: "index_activity_details_employees_on_activity_detail_id"
+    t.index ["employee_id"], name: "index_activity_details_employees_on_employee_id"
   end
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -39,12 +50,14 @@ ActiveRecord::Schema.define(version: 201901200845046) do
   create_table "billings", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "businesses", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -53,6 +66,7 @@ ActiveRecord::Schema.define(version: 201901200845046) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "employee_activities", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -71,6 +85,7 @@ ActiveRecord::Schema.define(version: 201901200845046) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "expenses", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -107,6 +122,7 @@ ActiveRecord::Schema.define(version: 201901200845046) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -117,6 +133,7 @@ ActiveRecord::Schema.define(version: 201901200845046) do
     t.decimal "unit_price", precision: 18, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "subscriptions", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -139,6 +156,14 @@ ActiveRecord::Schema.define(version: 201901200845046) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vendors", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "phone_number"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "work_details", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", null: false
     t.string "unit_of_measure"
@@ -147,6 +172,7 @@ ActiveRecord::Schema.define(version: 201901200845046) do
     t.integer "sequence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.index ["business_id_id"], name: "index_work_details_on_business_id_id"
     t.index ["product_id_id"], name: "index_work_details_on_product_id_id"
   end

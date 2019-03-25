@@ -5,7 +5,7 @@ class ActivityDetail < ApplicationRecord
 	ACTIVITY_STATUS = {started: 0, completed: 1}
 
 	def status_val
-		p ACTIVITY_STATUS[status]
+		# p ACTIVITY_STATUS[status]
     ACTIVITY_STATUS[status]
   end
 
