@@ -26,7 +26,7 @@ class CustomersController < ApplicationController
   def create
     params.permit!
     @customer = Customer.new(params[:customer])
-
+    @customer.user_id = current_user.id
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }

@@ -32,7 +32,7 @@ class WorkDetailsController < ApplicationController
   def create
     params.permit!
     @work_detail = WorkDetail.new(params[:work_detail])
-
+    @work_detail.user_id = current_user.id
     respond_to do |format|
       if @work_detail.save!
         format.html { redirect_to @work_detail, notice: 'Work detail was successfully created.' }

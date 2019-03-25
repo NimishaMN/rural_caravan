@@ -29,7 +29,7 @@ class BusinessesController < ApplicationController
   def create
     params.permit!
     @business = Business.new(params[:business])
-
+    @business.user_id = current_user.id
     respond_to do |format|
       if @business.save
         format.html { redirect_to @business, notice: 'Business was successfully created.' }

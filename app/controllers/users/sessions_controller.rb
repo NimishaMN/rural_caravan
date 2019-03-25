@@ -2,12 +2,20 @@
 
 class Users::SessionsController < Devise::SessionsController
   before_action :set_route
+  skip_before_filter :user_from_subdomain
 
     def new
       self.resource = resource_class.new(sign_in_params)
       store_location_for(resource, params[:redirect_to])
       super
     end
+
+    def session_timeout
+    session[:current_user_id] = nil
+    reset_session
+    flash[:notice] = "You have been logged out due to inactivity. Please login again."
+    redirect_to "devise/sessions#new"
+  end
 
     private
 
