@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :vendors
   resources :subscriptions
   resources :expenses
   # devise_for :users
