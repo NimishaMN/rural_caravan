@@ -1,4 +1,94 @@
-<p id="notice"><%= notice %></p>
+<div class="content">
+<section id="content">
+  <section class="main padder">
+    <div class='row'>
+      <div class='col-lg-3'>
+        <h2><i class="icon-file-text-alt text"></i> View Order</h2>
+      </div>
+      <div class="col-lg-9 m-t-large" align="right">
+        <div class="btn-group">
+    <%= link_to raw('<i class="icon-edit"> </i> Edit'), edit_order_path(@order), :class => 'btn btn-info btn-lg' %>
+       <%= link_to raw("<i class='icon-mail-reply'></i>Back"), orders_url, :class=>'btn  btn-default btn-lg' %>
+    <button class="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span><i></i>
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to raw('<i class="icon-trash"> </i>Delete this voucher'), order_path(@order), :method => "delete", :confirm => "Are you sure?" %></li>
+    </ul>
+  </div>
+      </div>
+     </div>
+    <p></p>
+    <section class="panel">
+      <div class="panel-body">
+     
+        <div class='row'>
+          <div class='col-sm-5'>
+            <%= @order.customer.name  %><p></p>
+            <%= @order.customer.phone_number  %><p></p>
+            <%= @order.customer.email  %>
+           </div>
+          <div class='col-sm-7'>
+            <section class="panel">
+              <div class="panel-body">
+              <div class="col-sm-6">
+                <p><strong>Order Number#:</strong> <%=@order.order_number%></p>
+                <p><strong>Record Date :</strong> <%=@order.record_date %></p>
+                <p><strong>Amount :</strong><%= %></p>
+              </div>
+              </div>
+              <footer class="panel-footer">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <i class="icon-calendar"> </i>Created on <%=@order.created_at.strftime("%d-%m-%Y") %> by User Name
+                  </div>
+                </div>
+              </footer>
+            </section>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-lg-12'>
+            <table  class="table table-striped b-t text-small" id="report">
+              <thead>
+                <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th class="text-right">Qty</th>
+                <th class="text-right">Unit Cost</th>
+                <th class="text-right">Amount</th>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+                </tr>
+              </thead>
+              <tbody>
+             
+                <% @order_line_items.each do |item|%>
+                 <tr>
+                <td><%= item.product.name %></td>
+                <td><%= item.description %></td>
+                <td class="text-right"><%= item.quantity %></td>
+                <td class="text-right"><%= item.unit_rate %></td>
+                <td class="text-right"><%= item.amount %></td>
+                 </tr>
+                <% end %>
+             
+                <tr>
+                  <td align="right" colspan="4">Sub total</td>
+                  <td align="right"> </td>
+                </tr>
+                <tr>
+                  <td align="right" colspan="4">Discount</td>
+                  <td align="right"></td>
+                </tr>
+                <tr>
+                  <td align="right" colspan="4"><b>Total</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+     </div>
+   </section>
+ </section>
+</section>
+</div>

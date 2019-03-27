@@ -22,11 +22,11 @@
                 <table id="orders" class="table table-striped m-b-none text-small">
                   <thead>
                     <tr>
-      
-                     <th width="20%">Voucher Number</th>
                      <th width="20%">Date</th>
+                     <th width="20%">Voucher Number</th>
+                     <th width="20%">Customer</th>
                      <th width="20%">Status</th>
-                     <th width="20%"></th>
+                     <th width="20%">Actions</th>
                  
                     </tr>
    
@@ -38,11 +38,13 @@
     <% else %>
     <% @orders.each do |order| %>
     <tr>
+         <td><%= order.record_date%></td>
         <td><%= order.order_number%></td>
-        <td><%= order.record_date%></td>
-        <td></td>
+       
+        <td><%= order.customer.name%></td>
+        <td>Status</td>
         <td>
-          <div class="btn-group" style="float: right;">
+          <div class="btn-group">
             <button class="btn btn-white" onclick="location.href='/orders/<%= order.id %>'"; >View</button>
             <button class="btn btn-white dropdown-toggle" data-toggle="dropdown">
             <span class="caret"></span>

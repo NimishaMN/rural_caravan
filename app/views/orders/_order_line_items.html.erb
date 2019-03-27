@@ -1,0 +1,20 @@
+<tr  id="row<%= index %>" valign="top" class='order_line'>
+      <td>
+        <%= select_tag("order[order_line_items_attributes][#{index}][product_id]", options_from_collection_for_select(@products, :id, :name,:selected => order_line_item.product_id ),:include_blank => true, :prompt => 'Select product', :"data-index" => index, :style => "width:150px;")  %>
+
+      </td>
+      <td>
+        <%= text_area_tag "order[order_line_items_attributes][#{index}][description]",order_line_item.description, :class => "form-control bg-focus", :id => 'description',:rows =>1, :cols => 10 %>
+      </td>
+
+      <td>
+        <%= text_field_tag "order[order_line_items_attributes][#{index}][quantity]",order_line_item.quantity, :class => "form-control bg-focus text-right",  :id => 'quantity', :maxlength => 18, 'data-index' => index %>
+      </td>
+      <td>
+        <%= text_field_tag "order[order_line_items_attributes][#{index}][unit_rate]",order_line_item.unit_rate, :class => 'form-control bg-focus text-right', :id => 'unit_rate',  :maxlength => 18 %>
+      </td>
+      <td align='right'>
+        <%= text_field_tag "order[order_line_items_attributes][#{index}][amount]", order_line_item.amount, :class => 'form-control bg-focus text-right', :id => 'total' %>
+       </td>
+        <td><%= link_to "<i class='icon-remove'></i>".html_safe,{:action => :remove_line_item, :index => index, :line_item_id => order_line_item.id},:class=> "btn btn-danger", :id => 'cancel', :remote => true%></td>
+    </tr>

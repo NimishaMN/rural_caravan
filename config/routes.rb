@@ -21,6 +21,8 @@ end
   resources :order_line_items
   resources :businesses
   resources :products
+  get "orders/remove_line_item"
+  get "orders/add_row"
   resources :orders
   resources :customers
   post 'activity_details/status'

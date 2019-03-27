@@ -10,6 +10,9 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order = Order.find(params[:id])
+    @order_line_items = @order.order_line_items
+    @customer = @order.customer
   end
 
   # GET /orders/new
@@ -63,6 +66,17 @@ class OrdersController < ApplicationController
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def add_row
+    @order_line_item = OrderLineItem.new
+    @products = Product.all
+    respond_to do |format|
+      format.js
+    end
+  end
+  def remove_line_item
+    
   end
 
   private
