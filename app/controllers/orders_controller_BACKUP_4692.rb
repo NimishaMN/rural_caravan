@@ -10,9 +10,6 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order = Order.find(params[:id])
-    @order_line_items = @order.order_line_items
-    @customer = @order.customer
   end
 
   # GET /orders/new
@@ -30,8 +27,15 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     params.permit!
+<<<<<<< HEAD
+    @order = Order.new_orders(params)
+    logger.debug"+++++++++++++++++++++#{@order.inspect}"
+    @order.assign_attributes(params[:order])
+
+=======
     @order = Order.new(params[:order])
     @order.user_id = current_user.id
+>>>>>>> 8b767c6074838c146c4294ed287396f10918ff83
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -66,17 +70,6 @@ class OrdersController < ApplicationController
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def add_row
-    @order_line_item = OrderLineItem.new
-    @products = Product.all
-    respond_to do |format|
-      format.js
-    end
-  end
-  def remove_line_item
-    
   end
 
   private

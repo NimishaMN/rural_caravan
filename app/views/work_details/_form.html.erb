@@ -5,21 +5,21 @@
         <div class="panel-body">
           <div class="form-group">
             <div class="field">
-            <%= hidden_field_tag "[business_id]", @business.id %>
+          
               <%= f.label :product %><br>
-              <%= f.collection_select :product_id, Product.order(:name), :id,:name %>
+            <%= f.collection_select :product_id_id, Product.order(:name), :id, :name, html_options = {:class => 'form-control bg-focus', :style=>"width:200px;" } %>
             </div>
             <div class="field">
               <%= f.label :name %><br>
-              <%= f.text_field :name %>
+              <%= f.text_field :name, :class => 'form-control bg-focus', :style=>"width:200px;" %>
             </div>
             <div class="field">
               <%= f.label :unit_of_measure %><br>
-              <%= f.text_field :unit_of_measure %>
+              <%= f.text_field :unit_of_measure, :class => 'form-control bg-focus', :style=>"width:200px;" %>
             </div>
             <div class="field">
               <%= f.label :sequence %><br>
-              <%= f.text_field :sequence %>
+              <%= f.text_field :sequence, :class => 'form-control bg-focus', :style=>"width:120px;" %>
             </div>
             <div class="col-lg-8 col-lg-offset-4" id="submit">
               <button class="btn btn-success">Save</button> 

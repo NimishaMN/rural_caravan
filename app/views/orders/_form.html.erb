@@ -20,7 +20,7 @@
       <div class='col-lg-3'>
         <label  class="control-label-required">Customer Name</label>
         <div class='input-group'>
-          <%= f.select(:customer_id, options_from_collection_for_select(@customers, "id", "name", params[:customer_id].to_i),{:prompt => 'Type to select'},{:style => "width:200px;"}) %>
+          <%= f.select(:customer_id, options_from_collection_for_select(@customers, "id", "name", @order.customer_id),{:prompt => 'Type to select'},{:style => "width:200px;"}) %>
          </div>
       </div>
       <div class='col-lg-1'></div>
@@ -46,26 +46,12 @@
   </thead>
   <tbody>
   <% @order.order_line_items.each_with_index do |order_line_item, index| %>
-    <tr>
-      <td>
-        <%= select_tag("order[order_line_items_attributes][#{index}][product_id]", options_from_collection_for_select(@products, :id, :name,:selected => order_line_item.product_id ),:include_blank => true, :prompt => 'Select product', :"data-index" => index, :style => "width:150px;")  %>
-
-      </td>
-      <td>
-        <%= text_area_tag "order[order_line_items_attributes][#{index}][description]",order_line_item.description, :class => "form-control bg-focus", :id => 'description',:rows =>1, :cols => 10 %>
-      </td>
-
-      <td>
-        <%= text_field_tag "order[order_line_items_attributes][#{index}][quantity]",order_line_item.quantity, :class => "form-control bg-focus text-right",  :id => 'quantity', :maxlength => 18, 'data-index' => index %>
-      </td>
-      <td>
-        <%= text_field_tag "order[order_line_items_attributes][#{index}][unit_rate]",order_line_item.unit_rate, :class => 'form-control bg-focus text-right', :id => 'unit_rate',  :maxlength => 18 %>
-      </td>
-      <td align='right'>
-        <%= text_field_tag "order[order_line_items_attributes][#{index}][amount]", order_line_item.amount, :class => 'form-control bg-focus text-right', :id => 'total' %>
-       </td>
-    </tr>
-    <%end%>
+  <%= render "order_line_items", :order_line_item => order_line_item, :index => index %>
+  <% end %>
+    <tr id="row_link_order" class='row-link-order' valign="top">
+    <td valign="top" colspan="8"> <%= link_to "+ Add new row",{:action => :add_row, :index => @order.order_line_items.size}, :class => "btn btn-white btn-sm", :remote => true %>
+    </td>
+  </tr>
   </tbody>
 </table>
 
