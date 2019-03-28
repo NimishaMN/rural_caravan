@@ -38,11 +38,11 @@
     <% else %>
     <% @orders.each do |order| %>
     <tr>
-         <td><%= order.record_date%></td>
+         <td><%= order.order_date%></td>
         <td><%= order.order_number%></td>
        
         <td><%= order.customer.name%></td>
-        <td>Status</td>
+        <td><%= order.status %></td>
         <td>
           <div class="btn-group">
             <button class="btn btn-white" onclick="location.href='/orders/<%= order.id %>'"; >View</button>

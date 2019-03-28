@@ -16,5 +16,5 @@
       <td align='right'>
         <%= text_field_tag "order[order_line_items_attributes][#{index}][amount]", order_line_item.amount, :class => 'form-control bg-focus text-right', :id => 'total' %>
        </td>
-        <td><%= link_to "<i class='icon-remove'></i>".html_safe,{:action => :remove_line_item, :index => index, :line_item_id => order_line_item.id},:class=> "btn btn-danger", :id => 'cancel', :remote => true%></td>
+        
     </tr>

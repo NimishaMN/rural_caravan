@@ -23,11 +23,10 @@
           <%= f.select(:customer_id, options_from_collection_for_select(@customers, "id", "name", @order.customer_id),{:prompt => 'Type to select'},{:style => "width:200px;"}) %>
          </div>
       </div>
-      <div class='col-lg-1'></div>
-
-      <div class='col-lg-3'>
+      
+      <div class='col-lg-4'>
         <%= f.label :Order_date,("Order Date"), :class=>'control-label'%>
-        <%= f.text_field :order_date, :class => 'form-control datepicker', :style=>"width:120px;", :id => "order_date"%>
+        <%= f.date_select :order_date, :class => 'form-control datepicker', :style=>"width:120px;", :id => "order_date"%>
       </div>
       <div class='col-lg-1'></div>
 
@@ -48,10 +47,7 @@
   <% @order.order_line_items.each_with_index do |order_line_item, index| %>
   <%= render "order_line_items", :order_line_item => order_line_item, :index => index %>
   <% end %>
-    <tr id="row_link_order" class='row-link-order' valign="top">
-    <td valign="top" colspan="8"> <%= link_to "+ Add new row",{:action => :add_row, :index => @order.order_line_items.size}, :class => "btn btn-white btn-sm", :remote => true %>
-    </td>
-  </tr>
+    
   </tbody>
 </table>
 

@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
     	t.string  :order_number
 	    t.date  :record_date
 	    t.date :order_date
-	    t.integer :status
+	    t.integer :status, default: 0
 
       t.timestamps
     end

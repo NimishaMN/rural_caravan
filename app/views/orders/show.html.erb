@@ -40,7 +40,7 @@
               <footer class="panel-footer">
                 <div class="row">
                   <div class="col-sm-6">
-                    <i class="icon-calendar"> </i>Created on <%=@order.created_at.strftime("%d-%m-%Y") %> by User Name
+                    <i class="icon-calendar"> </i>Created on <%=@order.created_at.strftime("%d-%m-%Y") %> by <%= current_user.shg_name %>
                   </div>
                 </div>
               </footer>
