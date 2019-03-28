@@ -6,8 +6,13 @@
           <div class="form-group">
 
             <div class="field">
+              <%= f.label :type %><br>
+              <%= select_tag :expense_status, options_for_select(Expense.statuses) %>
+            </div>
+
+            <div class="field">
               <%= f.label :customer_name %><br>
-              <%= f.collection_select :customer_id, Customer.order(:name), :id,:name %>
+              <%= f.collection_select :customer_id, @stakeholder.order(:name), :id,:name %>
             </div>
 
             <div class="field">
@@ -25,10 +30,7 @@
               <%= f.text_field :description %>
             </div>
 
-            <div class="field">
-              <%= f.label :type %><br>
-              <%= select_tag :expense_status, options_for_select(Expense.statuses) %>
-            </div>
+            
 
 
             <div class="col-lg-8 col-lg-offset-4" id="submit">
@@ -41,3 +43,17 @@
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    alert("hey");
+    $("#expense_status").on('change', function(){
+      alert($(this).val());
+    $ajax({
+      url: 'expenses/populate_other_list',
+      type: "GET",
+      data: {expense_status: $(this).val()},
+    })
+  });
+});
+</script>

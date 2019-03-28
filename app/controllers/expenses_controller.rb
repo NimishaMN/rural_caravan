@@ -15,6 +15,8 @@ class ExpensesController < ApplicationController
   # GET /expenses/new
   def new
     @expense = Expense.new
+    @stakeholder = Customer.all
+    @vendor = Vendor.all
   end
 
   # GET /expenses/1/edit
@@ -62,6 +64,18 @@ class ExpensesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to expenses_url, notice: 'Expense was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def populate_other_list
+    status = params[:expense_status]
+    if status == 0
+      @stakeholder = Customer.all
+    elsif status == 1
+      @stakeholder = Vendor.all
+    end
+    respond_to do |format|
+      format.json { render json: @stakeholder }
     end
   end
 
