@@ -3,7 +3,12 @@
   <section class="main padder">
     <div class="row">
       <div class="col-lg-7">
+      <% if @expense.present? %>
+      <% if @expense.expense_status == 0 %>
         <h2><span class="glyphicon glyphicon-user"></span> <%= @expense.customer.name %></h2>
+      <%else%>
+        <h2><span class="glyphicon glyphicon-user"></span> <%= @expense.vendor.name %></h2>
+       <%end%>
       </div>
       <div class="col-lg-5 m-t-large" align="right">
         <%= link_to raw("<i class='icon-mail-reply'></i>Back"), expenses_url, :class=>'btn  btn-default btn-lg' %>
@@ -22,5 +27,6 @@
 		<b>Description: </b>
 		<%= @expense.description %>
 	</p>
+	<%end%>
 	
-<%= link_to 'Edit', edit_expense_path(@expense) %> 
+

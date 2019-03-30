@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :vendors
   resources :subscriptions
-  put 'expenses/populate_other_list'
+  get 'expenses/populate_other_list'
   resources :expenses
   # devise_for :users
 

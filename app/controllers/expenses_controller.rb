@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: [:show, :edit, :update, :destroy]
+  before_action :set_expense, only: [:destroy]
 
   # GET /expenses
   # GET /expenses.json
@@ -15,7 +15,7 @@ class ExpensesController < ApplicationController
   # GET /expenses/new
   def new
     @expense = Expense.new
-    @stakeholder = Customer.all
+    # @stakeholder = Customer.all
     @vendor = Vendor.all
   end
 
@@ -68,12 +68,14 @@ class ExpensesController < ApplicationController
   end
 
   def populate_other_list
-    status = params[:expense_status]
+    status = params[:expense_status].to_i
+    p status
     if status == 0
       @stakeholder = Customer.all
     elsif status == 1
       @stakeholder = Vendor.all
     end
+    p @stakeholder
     respond_to do |format|
       format.json { render json: @stakeholder }
     end

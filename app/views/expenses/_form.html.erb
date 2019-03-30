@@ -7,17 +7,19 @@
 
             <div class="field">
               <%= f.label :type %><br>
-              <%= select_tag :expense_status, options_for_select(Expense.statuses) %>
+              <%= select_tag :expense_status, options_for_select(Expense.statuses), :class => 'form-control bg-focus', :style=>"width:200px;" %>
             </div>
-
+            <% Rails.logger.debug "stakeholder---------------- #{@stakeholder.inspect}"%>
+            <% if @stakeholder.present? %>
             <div class="field">
               <%= f.label :customer_name %><br>
-              <%= f.collection_select :customer_id, @stakeholder.order(:name), :id,:name %>
+              <%= f.collection_select :customer_id, @stakeholder.order(:name), :id,:name, :class => 'form-control bg-focus', :style=>"width:200px;" %>
             </div>
+            <%end%>
 
             <div class="field">
               <%= f.label :date %><br>
-              <%= f.text_field :expense_date, :class => 'form-control bg-focus', :style=>"width:200px;" %>
+              <%= f.date_select :expense_date, :class => 'form-control bg-focus', :style=>"width:200px;" %>
             </div>
 
             <div class="field">
@@ -29,15 +31,6 @@
               <%= f.label :description %><br>
               <%= f.text_field :description, :class => 'form-control bg-focus', :style=>"width:200px;" %>
             </div>
-
-<<<<<<< HEAD
-            
-=======
-            <div class="field">
-              <%= f.label :type %><br>
-              <%= select_tag :expense_status, options_for_select(Expense.statuses), :class => 'form-control bg-focus', :style=>"width:200px;" %>
-            </div>
->>>>>>> abe5c2c59b90dbcf6b54a6ad3df1944449b83191
 
 
             <div class="col-lg-8 col-lg-offset-4" id="submit">
@@ -53,11 +46,10 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    alert("hey");
     $("#expense_status").on('change', function(){
       alert($(this).val());
-    $ajax({
-      url: 'expenses/populate_other_list',
+    $.ajax({
+      url: 'populate_other_list',
       type: "GET",
       data: {expense_status: $(this).val()},
     })
