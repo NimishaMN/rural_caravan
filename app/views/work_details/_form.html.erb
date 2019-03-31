@@ -7,7 +7,7 @@
             <div class="field">
           
               <%= f.label :product %><br>
-            <%= f.collection_select :product_id_id, Product.order(:name), :id, :name, html_options = {:class => 'form-control bg-focus', :style=>"width:200px;" } %>
+            <%= f.collection_select :product_id, Product.order(:name), :id, :name, html_options = {:class => 'form-control bg-focus', :style=>"width:200px;" } %>
             </div>
             <div class="field">
               <%= f.label :name %><br>

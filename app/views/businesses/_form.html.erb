@@ -9,18 +9,10 @@
               <%= f.label :name %><br>
               <%= f.text_field :name, :class => 'form-control bg-focus', :style=>"width:200px;"%>
             </div>
-            <div class="field">
-              <%= f.label :product_name %><br>
-               <%= f.select(:product_id, options_from_collection_for_select(@products, "id", "name", params[:product_id].to_i),{:prompt => 'Type to select'},{:style => "width:200px;"}) %>
-            </div>
-
-            <div class="field">
-              <%= f.label :unit_of_measure %><br>
-              <%= f.text_field :unit_of_measure, :class => 'form-control bg-focus', :style=>"width:120px;" %>
-            </div>
 
             <div class="col-lg-8 col-lg-offset-4" id="submit">
               <button class="btn btn-success">Save</button> 
+              <a class="btn btn-success" href="/products/new">Next</a>
               <a class="btn btn-default" href="/businesses">Cancel</a>
             </div>
           </div>

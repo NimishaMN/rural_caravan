@@ -41,7 +41,7 @@
           <td><%= activity_detail.date%></td>
           <td><%= activity_detail.status_val %></td>
         <%else%>
-          <td><%= text_field_tag :end_date %></td>
+          <td><%= date_select :end_date %></td>
           <td><%= button_to :status, "activity_details/status?id=#{activity_detail.id}" %></td>
         <%end%>
         <td><%= link_to 'Delete', activity_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
