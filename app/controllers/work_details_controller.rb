@@ -36,7 +36,7 @@ class WorkDetailsController < ApplicationController
     @work_detail.user_id = current_user.id
     respond_to do |format|
       if @work_detail.save!
-        format.html { redirect_to @work_detail, notice: 'Work detail was successfully created.' }
+        format.html { redirect_to @business, notice: 'Work detail was successfully created.' }
         format.json { render :show, status: :created, location: @work_detail }
       else
         format.html { render :new }

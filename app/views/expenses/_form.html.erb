@@ -7,15 +7,15 @@
 
             <div class="field">
               <%= f.label :type %><br>
-              <%= select_tag :expense_status, options_for_select(Expense.statuses), :class => 'form-control bg-focus', :style=>"width:200px;" %>
+              <%= select_tag :expense_status, options_for_select(Expense.statuses), {:prompt => 'Select' , :class => 'form-control bg-focus', :style=>"width:200px;"} %>
             </div>
             <% Rails.logger.debug "stakeholder---------------- #{@stakeholder.inspect}"%>
-            <% if @stakeholder.present? %>
-            <div class="field">
+            
+            <div class="field" id="stakeholder">
               <%= f.label :customer_name %><br>
               <%= f.collection_select :customer_id, @stakeholder.order(:name), :id,:name, :class => 'form-control bg-focus', :style=>"width:200px;" %>
             </div>
-            <%end%>
+            
 
             <div class="field">
               <%= f.label :date %><br>
@@ -52,6 +52,9 @@
       url: 'populate_other_list',
       type: "GET",
       data: {expense_status: $(this).val()},
+      success: function(data){
+        $("#customer_id").stakeholder(data);
+      }
     })
   });
 });
