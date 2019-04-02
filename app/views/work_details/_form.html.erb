@@ -1,9 +1,11 @@
-<%= form_for(@work_detail, local: true) do |f| %>
+<%= form_with(model: work_detail, local: true) do |f| %>
   <div class="row">
     <div class="col-lg-12">
       <section class="panel">
         <div class="panel-body">
           <div class="form-group">
+          <%= hidden_field_tag "[business_id]", @business.id %>
+
             <div class="field">
           
               <%= f.label :product %><br>
@@ -23,7 +25,7 @@
             </div>
             <div class="col-lg-8 col-lg-offset-4" id="submit">
               <button class="btn btn-success">Save</button> 
-              <a class="btn btn-default" href="/work_details">Cancel</a>
+              <a class="btn btn-default" href="/businesses">Cancel</a>
             </div>
           </div>
         </div>

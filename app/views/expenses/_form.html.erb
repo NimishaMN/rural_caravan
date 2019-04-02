@@ -14,6 +14,7 @@
             <div class="field" id="stakeholder">
               <%= f.label :customer_name %><br>
               <%= f.collection_select :customer_id, @stakeholder.order(:name), :id,:name, :class => 'form-control bg-focus', :style=>"width:200px;" %>
+              <%= f.grouped_collection_select(:customer_id, @stakeholder, :name, {include_blank: true}, {class: 'form-control bg-focus'}, style: 'width:200px') %>
             </div>
             
 
@@ -46,16 +47,28 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+    // $("#expense_status").change(function(){
     $("#expense_status").on('change', function(){
       alert($(this).val());
     $.ajax({
       url: 'populate_other_list',
       type: "GET",
       data: {expense_status: $(this).val()},
-      success: function(data){
-        $("#customer_id").stakeholder(data);
-      }
+      success: handleResponse
+      // success: function(data){
+      //   $("#customer_id").val(data);
+      // }
     })
+
+    // var state = $('select#expense_status :selected').val();
+    // if(state == "") state="0";
+    // jQuery.getJSON('/expenses/populate_other_list/', function(data){
+    //   alert(data);
+    //     $("#expense_status").val(data);
+    //     alert(data.name);
+    // })
+    // return false;
+
   });
-});
+// });
 </script>
