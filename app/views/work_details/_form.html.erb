@@ -7,9 +7,10 @@
           <%= hidden_field_tag "[business_id]", @business.id %>
 
             <div class="field">
-          
+            <%= hidden_field_tag "[business_id]", @business.id %>
+
               <%= f.label :product %><br>
-            <%= f.collection_select :product_id, Product.order(:name), :id, :name, html_options = {:class => 'form-control bg-focus', :style=>"width:200px;" } %>
+            <%= f.select :product_id, options_from_collection_for_select(@products, "id", "name"), html_options = {:class => 'form-control bg-focus', :style=>"width:200px;" } %>
             </div>
             <div class="field">
               <%= f.label :name %><br>

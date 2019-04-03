@@ -82,7 +82,7 @@
           </div>
           <div class="content">
             <div id="chartPreferences" class="ct-chart ct-perfect-fourth">
-              <%= column_chart Order.group(:created_at).count %>
+              <%= bar_chart Order.group(:status).order(:order_date).count, ytitle: "Status", xtitle: "Count" %>
             </div>
             <br/>
             <div class="footer">
@@ -103,7 +103,13 @@
           </div>
           <div class="content">
             <div id="chartPreferences" class="ct-chart ct-perfect-fourth">
-              <%= column_chart WorkDetail.group(:name).count %>
+              <%= column_chart [
+                {name: "Revenue", data: @receivables },
+                {name: "Expense", data: @payables }
+               ],
+               stacked: true, 
+               discrete: true
+               %>
             </div>
             <br/>
             <div class="footer">

@@ -37,7 +37,7 @@
         <td><%= link_to employee.name, employee%></td>
         <td></td>
         <td></td>
-        <td></td>
+        <td><%= link_to 'Delete', employee, method: :delete, data: { confirm: 'Are you sure?' }%></td>
       </tr>
     <% end %>
                     <% end %>
