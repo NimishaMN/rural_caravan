@@ -19,8 +19,8 @@ class WorkDetailsController < ApplicationController
 
   # GET /work_details/new
   def new
-    @product = Product.all
-    @business = Business.all
+    @business = Business.find(params[:business_id])
+    @products = Product.where(business_id: @business.id)
     @work_detail = WorkDetail.new
   end
 
