@@ -20,7 +20,7 @@ class WorkDetailsController < ApplicationController
   # GET /work_details/new
   def new
     @product = Product.all
-    @business = Business.all
+    @business = Business.find(params[:business_id])
     @work_detail = WorkDetail.new
   end
 
@@ -34,6 +34,7 @@ class WorkDetailsController < ApplicationController
     params.permit!
     @work_detail = WorkDetail.new(params[:work_detail])
     @work_detail.user_id = current_user.id
+    @business = Business.find(@work_detail.business_id)
     respond_to do |format|
       if @work_detail.save!
         format.html { redirect_to @business, notice: 'Work detail was successfully created.' }

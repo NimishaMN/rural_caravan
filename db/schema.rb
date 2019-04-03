@@ -10,19 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181204160324567) do
+ActiveRecord::Schema.define(version: 2018120314430045679) do
 
   create_table "activity_details", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "work_detail_id", null: false
     t.integer "team_size"
-    t.date "date"
-    t.integer "amount_of_work"
-    t.integer "expense"
-    t.integer "revenue"
-    t.integer "income"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
   end
 
   create_table "activity_details_employees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -116,7 +113,6 @@ ActiveRecord::Schema.define(version: 20181204160324567) do
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "order_number"
     t.integer "customer_id", null: false
-    t.integer "product_id", null: false
     t.date "record_date"
     t.date "order_date"
     t.integer "status"
@@ -167,14 +163,12 @@ ActiveRecord::Schema.define(version: 20181204160324567) do
   create_table "work_details", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", null: false
     t.string "unit_of_measure"
-    t.bigint "business_id_id"
-    t.bigint "product_id_id"
+    t.integer "business_id"
+    t.integer "product_id"
+    t.integer "user_id"
     t.integer "sequence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.index ["business_id_id"], name: "index_work_details_on_business_id_id"
-    t.index ["product_id_id"], name: "index_work_details_on_product_id_id"
   end
 
 end

@@ -35,13 +35,13 @@
     <% @activity_details.each do |activity_detail| %>
       <tr>
         <td><%= link_to activity_detail.work_detail.name, activity_detail%></td>
-        <td><%= activity_detail.team_size%></td>
-        <td><%= activity_detail.date%></td>
+        <td><%= %></td>
+        <td><%= activity_detail.start_date%></td>
         <% if activity_detail.status == 1 %>
           <td><%= activity_detail.date%></td>
           <td><%= activity_detail.status_val %></td>
         <%else%>
-          <td><%= date_select :end_date %></td>
+          <td><%= activity_detail.end_date %></td>
           <td><%= button_to :status, "activity_details/status?id=#{activity_detail.id}" %></td>
         <%end%>
         <td><%= link_to 'Delete', activity_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>

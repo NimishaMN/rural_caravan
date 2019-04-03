@@ -5,7 +5,7 @@
         <div class="panel-body">
           <div class="form-group">
             <div class="field">
-          
+         <%= f.hidden_field :business_id, :value => @business.id %>
               <%= f.label :product %><br>
             <%= f.collection_select :product_id, Product.order(:name), :id, :name, html_options = {:class => 'form-control bg-focus', :style=>"width:200px;" } %>
             </div>
