@@ -35,10 +35,10 @@
     <% @activity_details.each do |activity_detail| %>
       <tr>
         <td><%= link_to activity_detail.work_detail.name, activity_detail%></td>
-        <td><%= %></td>
+        <td><%=  %></td>
         <td><%= activity_detail.start_date%></td>
         <% if activity_detail.status == 1 %>
-          <td><%= activity_detail.date%></td>
+          <td><%= activity_detail.start_date%></td>
           <td><%= activity_detail.status_val %></td>
         <%else%>
           <td><%= activity_detail.end_date %></td>

@@ -12,21 +12,12 @@
 
 <div class="field">
     <%= f.label :select_team, :class=>'control-label-required' %>
-
-<% @activity_detail.employee_activitys.each_with_index do |item, index| %>
-<%= select("activity_detail[employee_activitys_attributes][#{index}][employee_id]",item.employee_id,
+<%= f.select :empolyees,
   Employee.all.map { |u| [u.name, u.id] },
                { include_blank: true },
                 { class: 'chosen-select', 
-                  :multiple => true})
+                  :multiple => true}
 %>
-<% end %>
-
-<!--     <select class="chosen-select" multiple="true">
-      <%= @employess.each do | emp |%>
-      <option value="<%= emp.id %>"><%= emp.name %></option>
-     <% end %>
-    </select> -->
   </div>
 
   <div class="field">

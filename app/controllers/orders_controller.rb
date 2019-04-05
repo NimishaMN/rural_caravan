@@ -4,7 +4,20 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @q = Order.ransack(params[:q])
+   
+    if params[:q]      
+   
+      @orders = @q.result
+    else  
+
+      @orders = Order.all.page(params[:page]).per(100)
+    end
+    respond_to do |format|
+      format.html # index.html.erb
+      #format.json { render :json => CustomerDatatable.new(view_context, @company)}
+    end
+  
   end
 
   # GET /orders/1

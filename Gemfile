@@ -34,8 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
-gem 'therubyracer'
+#Ransack for filtering
+gem 'ransack', github: 'activerecord-hackery/ransack'
 #For Multiple select choosen-rails
 gem 'chosen-rails'
 

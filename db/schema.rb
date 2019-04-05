@@ -14,12 +14,12 @@ ActiveRecord::Schema.define(version: 2018120314430045679) do
 
   create_table "activity_details", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "work_detail_id", null: false
-    t.integer "team_size"
     t.date "start_date"
     t.date "end_date"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "activity_details_employees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -67,8 +67,12 @@ ActiveRecord::Schema.define(version: 2018120314430045679) do
   end
 
   create_table "employee_activities", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.bigint "activity_detail_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["activity_detail_id"], name: "index_employee_activities_on_activity_detail_id"
+    t.index ["employee_id"], name: "index_employee_activities_on_employee_id"
   end
 
   create_table "employee_activity", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

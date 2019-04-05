@@ -1,6 +1,7 @@
 class ActivityDetailsController < ApplicationController
   before_action :set_activity_detail, only: [:show, :edit, :update, :destroy]
 
+
   # GET /activity_details
   # GET /activity_details.json
   def index
@@ -11,6 +12,9 @@ class ActivityDetailsController < ApplicationController
   # GET /activity_details/1.json
   def show
     @activity_detail = ActivityDetail.find(params[:id])
+    # @employee_activitys = @activity_detail.employee_activitys
+    
+    @team_size = @activity_detail.empolyees.compact.reject(&''.method(:==)).count
     respond_to do |format|
       format.html
       format.json {render :json => @employee}
@@ -26,6 +30,8 @@ class ActivityDetailsController < ApplicationController
 
   # GET /activity_details/1/edit
   def edit
+      @activity_detail = ActivityDetail.find(params[:id])
+      @employess = Employee.all
   end
 
   # POST /activity_details
@@ -33,7 +39,6 @@ class ActivityDetailsController < ApplicationController
   def create
     params.permit!
     @activity_detail = ActivityDetail.new(params[:activity_detail])
-
     @activity_detail.user_id = current_user.id
     respond_to do |format|
       if @activity_detail.save
