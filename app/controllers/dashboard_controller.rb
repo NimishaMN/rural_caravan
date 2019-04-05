@@ -12,5 +12,10 @@ class DashboardController < ApplicationController
 	p @payables
 	# @profit = @receivables.amount.first - @payables.amount.first
 	# p @profit
+
+    @male_employees = Employee.where(gender: 'male')
+    @female_employees = Employee.where(gender: 'female')
+    p @male_employees
+    p @female_employees
   end
 end

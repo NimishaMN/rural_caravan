@@ -43,10 +43,10 @@
         <div>
           <p>
             <b>Work detail </b>
-            <% @work_details.each do |work_detail| %>
-              <p><%= work_detail.name %></p>
-              <%= link_to 'Edit', edit_work_detail_path(work_detail.id) %>
-            <%end%> 
+              <% @work_details.each do |work_detail| %>
+                <p><%= work_detail.name %></p>
+                <%= link_to 'Edit', edit_work_detail_path(work_detail.id) %>
+            <% end %> 
           </p>
         </div>     
       </div>

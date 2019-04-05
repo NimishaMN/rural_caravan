@@ -1,14 +1,34 @@
- 		    
 <div class="row text-center text-lg-left">
-  <% @employees.each do |employee|%>
-  <div class="col-lg-3 col-md-4 col-xs-6">
-    <a href="/employees/<%= employee.id %>" class="d-block mb-4 h-30">
-    <%=image_tag("resource.png", class: "img-fluid img-thumbnail")%>
-                      
-      
-      <span><%= employee.name%></span>
-		</a>
-  </div>
- <%end%>
-</div>
 
+  <div class="col-lg-4">
+
+    <a href="/employees" class="d-block mb-10 h-50">
+      <div class="middle">
+        <div class="text">
+          <h1><%= @employees.count %></h1>
+          <h3>Employee</h3>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-lg-4">
+    <a href="/employees" class="d-block mb-10 h-50">
+      <div class="middle">
+        <div class="text">
+          <h1><%= @female_employees.count%></h1>
+          <h3>Female</h3>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-lg-4">
+    <a href="/employees" class="d-block mb-10 h-50">
+      <div class="middle">
+        <div class="text">
+          <h1><%= @male_employees.count %></h1>
+          <h3>Male</h3>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

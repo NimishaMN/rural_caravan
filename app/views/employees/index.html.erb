@@ -23,8 +23,8 @@
                   <thead>
                     <tr>
                       <th width="20%">Name</th>
-                      <th width="20%">Email</th>
-                      <th width="20%">Contact Number</th>
+                      <th width="20%">Salary</th>
+                      <th width="20%">City</th>
                       <th width="20%">Actions</th>
                     </tr>
                   </thead>
@@ -35,8 +35,8 @@
 <% @employees.each do |employee| %>
       <tr>
         <td><%= link_to employee.name, employee%></td>
-        <td></td>
-        <td></td>
+        <td><%= employee.salary%></td>
+        <td><%= employee.full_address %></td>
         <td><%= link_to 'Delete', employee, method: :delete, data: { confirm: 'Are you sure?' }%></td>
       </tr>
     <% end %>

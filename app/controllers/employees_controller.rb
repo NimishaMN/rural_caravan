@@ -31,7 +31,7 @@ class EmployeesController < ApplicationController
   def create
     params.permit!
     @employee = Employee.new(params[:employee])
-
+    @employee.user_id = current_user.id
     respond_to do |format|
       if @employee.save
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
@@ -46,6 +46,7 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1
   # PATCH/PUT /employees/1.json
   def update
+    params.permit!
     respond_to do |format|
       if @employee.update(employee_params)
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
