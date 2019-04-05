@@ -18,8 +18,8 @@
                 <div class="row text-small">
                     <div class="col-sm-4">
                           <div class="input-group">
-     <%= f.label :order_date, :class=>'control-label' %><br>
-    <%= f.date_select :order_date_eq, :class => 'form-control bg-focus', :style=>"width:120px;", :id => "order_date" %>
+     <%= f.label :status, :class=>'control-label' %><br>
+    <%= f.select(:status_eq, {'Open'=> 0, 'Assigned' => 1, 'Completed' => 2}, prompt: true) %>
   </div>
 </div>
  <div class="col-sm-2">
@@ -68,7 +68,7 @@
         <td><%= order.order_number%></td>
        
         <td><%= order.customer.name%></td>
-        <td><%= order.status %></td>
+        <td><%= order.get_status %></td>
         <td>
           <div class="btn-group">
             <button class="btn btn-white" onclick="location.href='/orders/<%= order.id %>'"; >View</button>

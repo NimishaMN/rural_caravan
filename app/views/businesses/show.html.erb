@@ -32,10 +32,7 @@
             <% @products.each do |product| %>
               <p><%= product.name %></p>
           </p>
-        </div>
-        <%= link_to 'Edit', edit_product_path(product.id) %> 
-      <%end%>
-      </div>
+        
 
       <div class="row">
         <div>
@@ -48,6 +45,11 @@
         </div>
         <%= link_to 'Edit', edit_work_detail_path(work_detail.id) %>
       <%end%> 
+      </div>
+
+      </div>
+        <%= link_to 'Edit', edit_product_path(product.id) %> 
+      <%end%>
       </div>
 
       
