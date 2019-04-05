@@ -6,7 +6,8 @@ class CreateActivityDetails < ActiveRecord::Migration[5.2]
     	t.date :start_date
       t.date :end_date
       t.integer :status
-    	# t.integer :amount_of_work
+      t.string :employees
+      # t.integer :amount_of_work
     	# t.integer :expense
     	# t.integer :revenue
     	# t.integer :income

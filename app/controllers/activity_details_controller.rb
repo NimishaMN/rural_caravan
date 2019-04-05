@@ -13,8 +13,7 @@ class ActivityDetailsController < ApplicationController
   def show
     @activity_detail = ActivityDetail.find(params[:id])
     # @employee_activitys = @activity_detail.employee_activitys
-    
-    @team_size = @activity_detail.empolyees.compact.reject(&''.method(:==)).count
+    @team_size = @activity_detail.employees.compact.reject(&''.method(:==)).count
     respond_to do |format|
       format.html
       format.json {render :json => @employee}
