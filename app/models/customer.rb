@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
 	has_many :orders, -> {where(deleted: false)}, dependent: :destroy
-	has_many :expenses
+	has_many :incomes
 	validates :name, :presence => true, :uniqueness => {:scope => :user_id}
 
 	def full_address

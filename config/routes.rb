@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   
+  resources :incomes
   resources :vendors
   resources :subscriptions
   get 'expenses/populate_other_list'
   resources :expenses
+
+  resources :incomes
   # devise_for :users
 
   # devise_for :users, controllers: {registrations: 'users/registrations'}, path_names: { sign_in: 'login',

@@ -16,7 +16,6 @@ class ExpensesController < ApplicationController
   # GET /expenses/new
   def new
     @expense = Expense.new
-    @stakeholder = Customer.all
     @vendor = Vendor.all
   end
 

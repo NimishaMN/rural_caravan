@@ -3,11 +3,11 @@
     <section class="main padder">
       <div class="row">
         <div class="col-lg-4">
-          <h2><i class="icon-user text"></i></i>Expenses</h2>
+          <h2><i class="icon-user text"></i></i>Incomes</h2>
         </div>
         <div class="col-lg-8 m-t-large" align="right">
           <div class="btn-group">
-            <button  onclick="location.href= '<%= new_expense_path %>'"; class="btn btn-success btn-lg" > <i class="icon-plus"> </i>Add New Transaction</button>
+            <button  onclick="location.href= '<%= new_income_path %>'"; class="btn btn-success btn-lg" > <i class="icon-plus"> </i>Add New Transaction</button>
             </button>
          </div>
         </div>
@@ -19,30 +19,31 @@
           <section class="panel">
            <div class="panel-body">
               <div class="table-responsive">
-                <table id="expenses" class="table table-striped m-b-none text-small">
+                <table id="incomes" class="table table-striped m-b-none text-small">
                   <thead>
                     <tr>
-                      <th>Customer Name</th>
+                      <th>Vendor Name</th>
                       <th>Amount</th>
                       <th>Date</th>
                       <th></th>
                       <th>Actions</th>
                       <th></th>
+                      
                     </tr>
                   </thead>
                   <tbody>
-                    <% if @expenses.blank? %>
+                    <% if @incomes.blank? %>
                         <%= render :partial=>"/shared/no_data_found"%>
                       <% else %>
 
-    <% @expenses.each do |expense| %>
+    <% @incomes.each do |income| %>
       <tr>
-        <td><%= expense.vendor.name%></td>
-        <td><%= expense.amount%></td>
-        <td><%= expense.expense_date%></td>
-        <td><%= link_to 'Show', expense %></td>
-        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
-        <td><%= link_to 'Delete', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= income.customer.name%></td>
+        <td><%= income.amount%></td>
+        <td><%= income.income_date%></td>
+        <td><%= link_to 'Show', income %></td>
+        <td><%= link_to 'Edit', edit_income_path(income) %></td>
+        <td><%= link_to 'Delete', income, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   <% end %>

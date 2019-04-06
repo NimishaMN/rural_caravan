@@ -1,7 +1,7 @@
 class Expense < ApplicationRecord
-	enum status: { Receivable: 0, Payable: 1 }
+	enum status: { Paid: 0, Unpaid: 1 }
 	belongs_to :user
-	belongs_to :customer, foreign_key: :customer_id, optional: true
+	belongs_to :vendor, foreign_key: :vendor_id, optional: true
 
 
 	

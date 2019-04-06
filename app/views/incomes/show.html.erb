@@ -1,18 +1,20 @@
+<p id="notice"><%= notice %></p>
+
 <div class="content">
 <section id="content">
   <section class="main padder">
     <div class="row">
       <div class="col-lg-7">
-      
-        <h2><span class="glyphicon glyphicon-user"></span> <%= @expense.vendor.name %></h2>
+        <h2><span class="glyphicon glyphicon-user"></span> <%= @income.customer.name %></h2>
       </div>
       <div class="col-lg-5 m-t-large" align="right">
-        <%= link_to raw("<i class='icon-mail-reply'></i>Back"), expenses_url, :class=>'btn  btn-default btn-lg' %>
+        <%= link_to raw("<i class='icon-mail-reply'></i>Back"), incomes_url, :class=>'btn  btn-default btn-lg' %>
         <p></p>
-      </div>  
-    <div class="col-lg-7">
-        <h4><%= @expense.vendor.full_address %></h4>
-        </div>  
+      </div>
+
+      <div class="col-lg-7">
+	      <h4><%= @income.customer.full_address %></h4>
+	      </div>  
     </div>
 
     
@@ -31,17 +33,12 @@
               <tbody>
              
                 <tr>
-                    <td><%= @expense.expense_date %></td>
-                    <td><%= @expense.description %></td>
-                    <td><%= @expense.amount %></td>
-                    <td><%= @expense.expense_status %></td>
+                    <td><%= @income.income_date %></td>
+                    <td><%= @income.description %></td>
+                    <td><%= @income.amount %></td>
+                    <td><%= @income.income_status %></td>
                   </tr>          
              </tbody>
             </table>
           </div>
         </div>
-	
-
-</section>
-</section>
-</div>
