@@ -15,7 +15,7 @@ class DashboardController < ApplicationController
   	p @payables
 
 
-    @male_employees = Employee.where(gender: 'male')
+    @male_employees = ActivityDetail.select("employees").where(created_at: '2019-04-05')
     @female_employees = Employee.where(gender: 'female')
     p @male_employees
     p @female_employees

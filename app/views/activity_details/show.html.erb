@@ -12,18 +12,13 @@
     </div>
 
 <p>
-	<b>Team Size Required: </b>
-	<%= @activity_detail.team_size %>
-</p>
-
-<p>
 	<b>Date: </b>
-	<%= @activity_detail.date %>
+	<%= @activity_detail.start_date %>
 </p>
 
 <p>
 	<b>Status: </b>
-	<%= @activity_detail.status_val %>
+	<%= @activity_detail.get_status %>
 </p>
 
 <%if @activity_detail.end_date.present? %>
@@ -32,6 +27,10 @@
 	<%= @activity_detail.end_date%>
 </p>
 <%end%>
+<p>
+  <b>Employees: </b>
+  <%= @activity_detail.employees.name%>
+</p>
 
 <%= link_to 'Edit', edit_activity_detail_path(@activity_detail) %> |
 

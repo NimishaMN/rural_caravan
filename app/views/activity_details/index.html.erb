@@ -23,9 +23,10 @@
                   <thead>
     <tr>
       <th>Acivity</th>
-      <th>Team size</th>
       <th>Start Date</th>
       <th>End Date</th>
+      <th>Status</th>
+      <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -35,15 +36,10 @@
     <% @activity_details.each do |activity_detail| %>
       <tr>
         <td><%= link_to activity_detail.work_detail.name, activity_detail%></td>
-        <td><%= activity_detail.team_size%></td>
-        <td><%= activity_detail.date%></td>
-        <% if activity_detail.status == 1 %>
-          <td><%= activity_detail.date%></td>
-          <td><%= activity_detail.status_val %></td>
-        <%else%>
-          <td><%= date_select :end_date %></td>
-          <td><%= button_to :status, "activity_details/status?id=#{activity_detail.id}" %></td>
-        <%end%>
+        <td><%= activity_detail.start_date%></td>
+        <td><%= activity_detail.end_date%></td>
+        <td><%= activity_detail.status %></td>
+        
         <td><%= link_to 'Delete', activity_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
