@@ -12,7 +12,7 @@
     </div>
     <div class="row">
       <!-- Address section -->
-      <div class="col-sm-3">
+      <div class="col-sm-6">
         <section class="panel bg-light">
           <div class="panel-body">
             <div class="text-center clearfix ">
@@ -21,33 +21,22 @@
                 <div class="bg-light padder padder-v">
                
                 </div>
-                <div class="edit_picture">
-                  <section class="panel">
-                    <header class="panel-heading"><strong>Upload Picture</strong></header>
-                    <div class="panel-body">
-                      
-                    </div>
-                  </section>
-                </div>
-                <div class="remove_picture">
-                  <section class="panel">
-                    <header class="panel-heading"><strong>Remove Picture</strong></header>
-                    <div class="panel-body">
-                     
-                    </div>
-                  </section>
-                </div>
               </div>
             </div>
-            <p><strong>Username:</strong> <%= @employee.name %></p>
-            <p><strong>Contact:</strong> </p>
-            <p><strong>Email:</strong> </p><br>
+            <p><strong>Salary:</strong> <%= @employee.salary %> </p>
+            <p><strong>Address:</strong> <%= @employee.full_address %> </p><br>
             
           </div><!-- panel body ends--> 
         </section>  
-      </div><!-- Address section ends-->
+      </div>
+
   
-    </div>    
+    </div> 
+    <%= link_to 'Edit', edit_employee_path(@employee) %> 
+          <div>
+        
+      </div>
+   
   </section>
 </section>
 </div>

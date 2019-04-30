@@ -19,9 +19,13 @@ class WorkDetailsController < ApplicationController
 
   # GET /work_details/new
   def new
+<<<<<<< HEAD
     @product = Product.all
     @business = Business.find(params[:business_id])
+=======
+    @business = Business.find(params[:business_id])
     @products = Product.where(business_id: @business.id)
+>>>>>>> b1c3f78e5812b8906481bd764bb7b43549d28080
     @work_detail = WorkDetail.new
   end
 
@@ -39,7 +43,11 @@ class WorkDetailsController < ApplicationController
     params.permit!
     @work_detail = WorkDetail.new(params[:work_detail])
     @work_detail.user_id = current_user.id
+<<<<<<< HEAD
+    @business = Business.find(@work_detail.business_id)
+=======
     @work_detail.business_id = params[:business_id]
+>>>>>>> b1c3f78e5812b8906481bd764bb7b43549d28080
     respond_to do |format|
       if @work_detail.save!
         format.html { redirect_to business_path(@work_detail.business_id), notice: 'Work detail was successfully created.' }

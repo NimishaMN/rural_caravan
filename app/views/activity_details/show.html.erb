@@ -13,7 +13,19 @@
 
 <p>
 	<b>Team Size Required: </b>
- <%= @team_size %>
+ <%= @team_size.count %>
+</p>
+<p>
+  <table>
+    <tr>
+      <th>Employee Name</th>
+    </tr>
+    <% @emp.each do |ply|%>
+    <tr>
+      <th><%= ply.name %></th>
+    </tr>
+     <% end %>
+  </table>
 </p>
 
 <p>

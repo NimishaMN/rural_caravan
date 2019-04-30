@@ -33,8 +33,7 @@
               <div class="panel-body">
               <div class="col-sm-6">
                 <p><strong>Order Number#:</strong> <%=@order.order_number%></p>
-                <p><strong>Record Date :</strong> <%=@order.record_date %></p>
-                <p><strong>Amount :</strong><%= %></p>
+                <p><strong>Amount :</strong><%=  %></p>
               </div>
               </div>
               <footer class="panel-footer">
@@ -63,26 +62,19 @@
               <tbody>
              
                 <% @order_line_items.each do |item|%>
-                 <tr>
-                <td><%= item.product.name %></td>
-                <td><%= item.description %></td>
-                <td class="text-right"><%= item.quantity %></td>
-                <td class="text-right"><%= item.unit_rate %></td>
-                <td class="text-right"><%= item.amount %></td>
-                 </tr>
+                  <tr>
+                    <td><%= item.product.name %></td>
+                    <td><%= item.description %></td>
+                    <td class="text-right"><%= item.quantity %></td>
+                    <td class="text-right"><%= item.unit_rate %></td>
+                    <td class="text-right"><%= item.amount %></td>
+                  </tr>          
+                  <tr></tr>
+                  <tr>
+                    <td align="right" colspan="4"><b>Total</b></td>
+                    <td align="right" colspan="4"><b><%= item.amount %></b></td>
+                  </tr>
                 <% end %>
-             
-                <tr>
-                  <td align="right" colspan="4">Sub total</td>
-                  <td align="right"> </td>
-                </tr>
-                <tr>
-                  <td align="right" colspan="4">Discount</td>
-                  <td align="right"></td>
-                </tr>
-                <tr>
-                  <td align="right" colspan="4"><b>Total</b></td>
-                </tr>
               </tbody>
             </table>
           </div>

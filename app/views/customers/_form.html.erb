@@ -20,6 +20,21 @@
               <%= f.text_field :email, :class => 'form-control bg-focus', :style=>"width:200px;" %>
             </div>
 
+            <div class="field">
+              <%= f.label :address %><br>
+              <%= f.text_field :address, :class => 'form-control bg-focus', :style=>"width:200px;" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :city %><br>
+              <%= f.text_field :city, :class => 'form-control bg-focus', :style=>"width:200px;" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :state %><br>
+              <%= f.text_field :state, :class => 'form-control bg-focus', :style=>"width:200px;" %>
+            </div>
+
             <div class="col-lg-8 col-lg-offset-4" id="submit">
               <button class="btn btn-success">Save</button> 
               <a class="btn btn-default" href="/customers">Cancel</a>

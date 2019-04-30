@@ -7,7 +7,12 @@
           <%= hidden_field_tag "[business_id]", @business.id %>
 
             <div class="field">
+<<<<<<< HEAD
          <%= f.hidden_field :business_id, :value => @business.id %>
+=======
+            <%= hidden_field_tag "[business_id]", @business.id %>
+
+>>>>>>> b1c3f78e5812b8906481bd764bb7b43549d28080
               <%= f.label :product %><br>
             <%= f.select :product_id, options_from_collection_for_select(@products, "id", "name"), html_options = {:class => 'form-control bg-focus', :style=>"width:200px;" } %>
             </div>

@@ -49,6 +49,7 @@ gem 'devise'
 gem 'bootsnap', '>= 1.1.0', require: false
 # For charts
 gem 'chartkick'
+gem "groupdate", github: "ankane/groupdate", branch: "rails5"
 gem 'highcharts-rails'
 gem 'tar2rubyscript'
 

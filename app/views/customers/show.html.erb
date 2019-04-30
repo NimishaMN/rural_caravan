@@ -22,3 +22,44 @@
 </p>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> 
+<div>
+  <p>
+    
+  </p>
+</div>
+  <div>
+    <b>Total Orders</b>
+              <div class='col-lg-12'>
+            <table  class="table table-striped b-t text-small" id="report">
+              <thead>
+                <tr>
+                <th>Item</th>
+                <th class="text-right">Qty</th>
+                <th class="text-right">Unit Cost</th>
+                <th class="text-right">Amount</th>
+
+                </tr>
+              </thead>
+              <tbody>
+             
+                <% @order_line_items.each do |item|%>
+                  <tr>
+                    <td><%= item.product.name %></td>
+                    <td class="text-right"><%= item.quantity %></td>
+                    <td class="text-right"><%= item.unit_rate %></td>
+                    <td class="text-right"><%= item.amount %></td>
+                  </tr>
+                <% end %>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="text-right" ><b>Total</b></td>
+                    <td class="text-right"><b><%= @order_line_items.sum(:amount) %></b></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+  </div>
+</section>
+</section>
+</div>

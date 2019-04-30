@@ -1,6 +1,6 @@
 class ActivityDetail < ApplicationRecord
 	belongs_to :work_detail
-	serialize :employes
+	serialize :employes, Array
 	ACTIVITY_STATUS = {started: 0, completed: 1}
 
 def self.new_activity

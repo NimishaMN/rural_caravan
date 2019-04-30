@@ -11,6 +11,14 @@ GIT
       i18n
       polyamorous (= 2.1.1)
 
+GIT
+  remote: https://github.com/ankane/groupdate.git
+  revision: 2847a806b531a61b68a09cdbbec7c1d9ed69e41c
+  branch: rails5
+  specs:
+    groupdate (2.5.0)
+      activesupport (>= 3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -279,6 +287,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  groupdate!
   highcharts-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

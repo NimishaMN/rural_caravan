@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018120314430045679) do
     t.date "start_date"
     t.date "end_date"
     t.integer "status"
-    t.string "employees"
+    t.string "employes"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -86,6 +86,12 @@ ActiveRecord::Schema.define(version: 2018120314430045679) do
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", null: false
+    t.string "gender"
+    t.decimal "salary", precision: 10
+    t.string "address"
+    t.string "city"
+    t.string "state", default: "Maharashtra"
+    t.string "country", default: "India"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
@@ -102,6 +108,19 @@ ActiveRecord::Schema.define(version: 2018120314430045679) do
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_expenses_on_customer_id"
     t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "incomes", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "user_id"
+    t.date "income_date"
+    t.bigint "customer_id"
+    t.decimal "amount", precision: 18, scale: 2, default: "0.0"
+    t.string "description"
+    t.integer "income_status", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_incomes_on_customer_id"
+    t.index ["user_id"], name: "index_incomes_on_user_id"
   end
 
   create_table "order_line_items", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

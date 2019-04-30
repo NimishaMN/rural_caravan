@@ -10,12 +10,12 @@ class ExpensesController < ApplicationController
   # GET /expenses/1
   # GET /expenses/1.json
   def show
+    @expense = Expense.find(params[:id])
   end
 
   # GET /expenses/new
   def new
     @expense = Expense.new
-    @stakeholder = Customer.all
     @vendor = Vendor.all
   end
 

@@ -14,12 +14,14 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+     @product = Product.new
     @business = Business.find(params[:business_id])
-    @product = Product.new
   end
 
   # GET /products/1/edit
   def edit
+    @product = Product.find(params[:id])
+    @business = Business.find(@product.business_id)
   end
 
   # POST /products
@@ -28,9 +30,10 @@ class ProductsController < ApplicationController
     params.permit!
     @product = Product.new(params[:product])
     @product.user_id = current_user.id
+    @product.business_id = params[:business_id]
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to business_path(@product.business_id), notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -42,9 +45,10 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    params.permit!
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to business_path(@product.business_id), notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }

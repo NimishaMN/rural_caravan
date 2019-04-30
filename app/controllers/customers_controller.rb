@@ -10,6 +10,11 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+    @customer = Customer.find(params[:id])
+    @orders = Order.where(customer_id: @customer.id)
+    @order_line_items = OrderLineItem.where(order_id: @orders.ids)
+    
+    p @orders
   end
 
   # GET /customers/new
