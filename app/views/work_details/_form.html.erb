@@ -1,14 +1,16 @@
 <%= form_with(model: work_detail, local: true) do |f| %>
+  <% if @work_detail.errors.any? %>
+    <% @work_detail.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
   <div class="row">
     <div class="col-lg-12">
       <section class="panel">
         <div class="panel-body">
           <div class="form-group">
           <%= hidden_field_tag "[business_id]", @business.id %>
-
             <div class="field">
-            <%= hidden_field_tag "[business_id]", @business.id %>
-
               <%= f.label :product %><br>
             <%= f.select :product_id, options_from_collection_for_select(@products, "id", "name"), html_options = {:class => 'form-control bg-focus', :style=>"width:200px;" } %>
             </div>

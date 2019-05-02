@@ -10,6 +10,8 @@ class VendorsController < ApplicationController
   # GET /vendors/1
   # GET /vendors/1.json
   def show
+    @vendor = Vendor.find(params[:id])
+    @expenses = Expense.where(vendor_id: @vendor.id)
   end
 
   # GET /vendors/new

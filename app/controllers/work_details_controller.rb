@@ -27,24 +27,25 @@ class WorkDetailsController < ApplicationController
   # GET /work_details/1/edit
   def edit
     @work_detail = WorkDetail.find(params[:id])
-    p @work_detail
     @business = Business.find(@work_detail.business_id)
-    p @business
-  end
+   end
 
   # POST /work_details
   # POST /work_details.json
   def create
     params.permit!
+    p params
     @work_detail = WorkDetail.new(params[:work_detail])
     @work_detail.user_id = current_user.id
     @work_detail.business_id = params[:business_id]
     respond_to do |format|
-      if @work_detail.save!
+      if @work_detail.save
         format.html { redirect_to business_path(@work_detail.business_id), notice: 'Work detail was successfully created.' }
         format.json { render :show, status: :created, location: @work_detail }
       else
-        format.html { render :new }
+        @business = Business.find(params[:business_id])
+        @products = Product.where(business_id: @business.id)
+        format.html { render :action => "new"  }
         format.json { render json: @work_detail.errors, status: :unprocessable_entity }
       end
     end
