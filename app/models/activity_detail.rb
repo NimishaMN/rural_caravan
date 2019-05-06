@@ -1,12 +1,16 @@
 class ActivityDetail < ApplicationRecord
-	belongs_to :work_detail, optional: true
-	# belongs_to :employee, optional: true
-	has_many :employee_activity
-	ACTIVITY_STATUS = {'0' => "started", '1' => "completed"}
+	belongs_to :work_detail
+	serialize :employes, Array
+	ACTIVITY_STATUS = {started: 0, completed: 1}
 
-	def get_status
+def self.new_activity
+	 @activity_detail = ActivityDetail.new
+	 @activity_detail
+end
+	def status_val
 		# p ACTIVITY_STATUS[status]
-    ACTIVITY_STATUS[status.to_s]
+    ACTIVITY_STATUS[status]
   end
+ 
 
 end

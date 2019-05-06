@@ -12,13 +12,30 @@
     </div>
 
 <p>
+	<b>Team Size Required: </b>
+ <%= @team_size.count %>
+</p>
+<p>
+  <table>
+    <tr>
+      <th>Employee Name</th>
+    </tr>
+    <% @emp.each do |ply|%>
+    <tr>
+      <th><%= ply.name %></th>
+    </tr>
+     <% end %>
+  </table>
+</p>
+
+<p>
 	<b>Date: </b>
 	<%= @activity_detail.start_date %>
 </p>
 
 <p>
 	<b>Status: </b>
-	<%= @activity_detail.get_status %>
+	<%= @activity_detail.status_val %>
 </p>
 
 <%if @activity_detail.end_date.present? %>
@@ -27,10 +44,6 @@
 	<%= @activity_detail.end_date%>
 </p>
 <%end%>
-<p>
-  <b>Employees: </b>
-  <%= @activity_detail.employees.name%>
-</p>
 
 <%= link_to 'Edit', edit_activity_detail_path(@activity_detail) %> |
 

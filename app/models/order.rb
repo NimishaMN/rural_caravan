@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-	enum status: {open: 0, assigned: 1, completed: 2}
+	STATUS = {'0' => "Open", '1' => "Assigned", '2' => "Completed"}
 	has_many :order_line_items, dependent: :destroy
 	belongs_to :customer, foreign_key: :customer_id, optional: true
 	accepts_nested_attributes_for :order_line_items
@@ -17,4 +17,8 @@ class Order < ApplicationRecord
 		order.order_line_items.build
 		order
 	end
+
+	def get_status
+	    STATUS[status.to_s]
+  	end
 end

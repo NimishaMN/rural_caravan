@@ -10,19 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181204160324567) do
+ActiveRecord::Schema.define(version: 2018120314430045679) do
 
   create_table "activity_details", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "work_detail_id", null: false
     t.integer "team_size"
-    t.date "date"
-    t.integer "amount_of_work"
-    t.integer "expense"
-    t.integer "revenue"
-    t.integer "income"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "status"
+    t.string "employes"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
   end
 
   create_table "activity_details_employees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -70,8 +69,12 @@ ActiveRecord::Schema.define(version: 20181204160324567) do
   end
 
   create_table "employee_activities", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "employee_id"
+    t.bigint "activity_detail_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["activity_detail_id"], name: "index_employee_activities_on_activity_detail_id"
+    t.index ["employee_id"], name: "index_employee_activities_on_employee_id"
   end
 
   create_table "employee_activity", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -83,6 +86,12 @@ ActiveRecord::Schema.define(version: 20181204160324567) do
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", null: false
+    t.string "gender"
+    t.decimal "salary", precision: 10
+    t.string "address"
+    t.string "city"
+    t.string "state", default: "Maharashtra"
+    t.string "country", default: "India"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
@@ -101,6 +110,19 @@ ActiveRecord::Schema.define(version: 20181204160324567) do
     t.index ["user_id"], name: "index_expenses_on_user_id"
   end
 
+  create_table "incomes", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "user_id"
+    t.date "income_date"
+    t.bigint "customer_id"
+    t.decimal "amount", precision: 18, scale: 2, default: "0.0"
+    t.string "description"
+    t.integer "income_status", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_incomes_on_customer_id"
+    t.index ["user_id"], name: "index_incomes_on_user_id"
+  end
+
   create_table "order_line_items", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
@@ -116,7 +138,6 @@ ActiveRecord::Schema.define(version: 20181204160324567) do
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "order_number"
     t.integer "customer_id", null: false
-    t.integer "product_id", null: false
     t.date "record_date"
     t.date "order_date"
     t.integer "status"
@@ -167,14 +188,12 @@ ActiveRecord::Schema.define(version: 20181204160324567) do
   create_table "work_details", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", null: false
     t.string "unit_of_measure"
-    t.bigint "business_id_id"
-    t.bigint "product_id_id"
+    t.integer "business_id"
+    t.integer "product_id"
+    t.integer "user_id"
     t.integer "sequence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.index ["business_id_id"], name: "index_work_details_on_business_id_id"
-    t.index ["product_id_id"], name: "index_work_details_on_product_id_id"
   end
 
 end

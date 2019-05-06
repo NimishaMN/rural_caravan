@@ -11,19 +11,24 @@
   </div>
 
 <div class="field">
-    <%= f.label :select_team, :class=>'control-label-required' %>
-
-    <select class="chosen-select" multiple="true">
-      <%= @employess.each do | emp |%>
-      <option value="<%= emp.id %>"><%= emp.name %></option>
-     <% end %>
-    </select>
+  <%= f.label :select_team, :class=>'control-label-required' %>
+<%= f.select :employes,
+  Employee.all.map { |u| [u.name, u.id] },
+               { include_blank: true },
+                { class: 'chosen-select', 
+                  :multiple => true}
+%>
   </div>
 
   <div class="field">
-    <%= f.label :date, :class=>'control-label' %><br>
-    <%= f.date_select :date, :class => 'form-control bg-focus', :style=>"width:120px;", :id => "start_date" %>
+    <%= f.label :start_date, :class=>'control-label' %><br>
+    <%= f.date_select :start_date, :class => 'form-control bg-focus', :style=>"width:120px;", :id => "start_date" %>
   </div>
+  <div class="field">
+    <%= f.label :end_date, :class=>'control-label' %><br>
+    <%= f.date_select :end_date, :class => 'form-control bg-focus', :style=>"width:120px;", :id => "start_date" %>
+  </div>
+
 
 
 

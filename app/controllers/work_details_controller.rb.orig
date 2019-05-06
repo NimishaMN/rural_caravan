@@ -19,34 +19,41 @@ class WorkDetailsController < ApplicationController
 
   # GET /work_details/new
   def new
+<<<<<<< HEAD
     @product = Product.all
     @business = Business.find(params[:business_id])
+=======
+    @business = Business.find(params[:business_id])
     @products = Product.where(business_id: @business.id)
+>>>>>>> b1c3f78e5812b8906481bd764bb7b43549d28080
     @work_detail = WorkDetail.new
   end
 
   # GET /work_details/1/edit
   def edit
     @work_detail = WorkDetail.find(params[:id])
+    p @work_detail
     @business = Business.find(@work_detail.business_id)
-   end
+    p @business
+  end
 
   # POST /work_details
   # POST /work_details.json
   def create
     params.permit!
-    p params
     @work_detail = WorkDetail.new(params[:work_detail])
     @work_detail.user_id = current_user.id
+<<<<<<< HEAD
+    @business = Business.find(@work_detail.business_id)
+=======
     @work_detail.business_id = params[:business_id]
+>>>>>>> b1c3f78e5812b8906481bd764bb7b43549d28080
     respond_to do |format|
-      if @work_detail.save
+      if @work_detail.save!
         format.html { redirect_to business_path(@work_detail.business_id), notice: 'Work detail was successfully created.' }
         format.json { render :show, status: :created, location: @work_detail }
       else
-        @business = Business.find(params[:business_id])
-        @products = Product.where(business_id: @business.id)
-        format.html { render :action => "new"  }
+        format.html { render :new }
         format.json { render json: @work_detail.errors, status: :unprocessable_entity }
       end
     end
