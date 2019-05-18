@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: [:destroy]
+  before_action :set_expense, only: [:destroy, :update]
 
   # GET /expenses
   # GET /expenses.json
@@ -21,6 +21,8 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/1/edit
   def edit
+    @expense = Expense.find(params[:id])
+    @vendor = Vendor.all
   end
 
   # POST /expenses
@@ -45,7 +47,7 @@ class ExpensesController < ApplicationController
   # PATCH/PUT /expenses/1.json
   def update
     params.permit!
-    p params
+    p @expense
     respond_to do |format|
       if @expense.update(params[:expense])
         format.html { redirect_to @expense, notice: 'Expense was successfully updated.' }
@@ -67,19 +69,6 @@ class ExpensesController < ApplicationController
     end
   end
 
-  def populate_other_list
-    status = params[:expense_status].to_i
-    p status
-    if status == 0
-      @stakeholder = Customer.all
-    elsif status == 1
-      @stakeholder = Vendor.all
-    end
-    p @stakeholder
-    respond_to do |format|
-      format.json { render json: @stakeholder }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
