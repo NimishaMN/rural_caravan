@@ -27,6 +27,12 @@
               <%= f.text_field :description, :class => 'form-control bg-focus', :style=>"width:200px;" %>
             </div>
 
+            <div class="field">
+              <%= f.label :status %><br>
+              <%= f.select :income_status, options_for_select(option_for_income_status), :class => 'form-control bg-focus', :style=>"width:200px;" %>
+              
+            </div>
+
 
             <div class="col-lg-8 col-lg-offset-4" id="submit">
               <button class="btn btn-success">Save</button> 

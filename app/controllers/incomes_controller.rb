@@ -21,6 +21,7 @@ class IncomesController < ApplicationController
 
   # GET /incomes/1/edit
   def edit
+    @customer = Customer.all
   end
 
   # POST /incomes

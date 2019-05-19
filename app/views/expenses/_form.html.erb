@@ -8,7 +8,7 @@
             <div class="field">
               
             </div>
-            
+            <%Rails.logger.debug "----------------#{@vendor.inspect}"%>
             <div class="field" id="stakeholder">
               <%= f.label :vendor_name %><br>
               <%= f.collection_select :vendor_id, @vendor.order(:name), :id,:name, :class => 'form-control bg-focus', :style=>"width:200px;" %>
@@ -31,6 +31,9 @@
               <%= f.text_field :description, :class => 'form-control bg-focus', :style=>"width:200px;" %>
             </div>
 
+            <div class="field">
+              <%= f.label :status %><br>
+              <%= f.select :expense_status, options_for_select(option_for_expense_status), :class => 'form-control bg-focus', :style=>"width:200px;" %>
             
             </div>
 

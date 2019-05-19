@@ -23,6 +23,7 @@ class ExpensesController < ApplicationController
   def edit
     @expense = Expense.find(params[:id])
     @vendor = Vendor.all
+    p @vendor
   end
 
   # POST /expenses
@@ -47,12 +48,14 @@ class ExpensesController < ApplicationController
   # PATCH/PUT /expenses/1.json
   def update
     params.permit!
+    @vendor = Vendor.all
     p @expense
     respond_to do |format|
       if @expense.update(params[:expense])
         format.html { redirect_to @expense, notice: 'Expense was successfully updated.' }
         format.json { render :show, status: :ok, location: @expense }
       else
+        @vendor = Vendor.all
         format.html { render :edit }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
