@@ -28,13 +28,14 @@ class WorkDetailsController < ApplicationController
   def edit
     @work_detail = WorkDetail.find(params[:id])
     @business = Business.find(@work_detail.business_id)
+    @products = Product.where(business_id: @business.id)
+    
    end
 
   # POST /work_details
   # POST /work_details.json
   def create
     params.permit!
-    p params
     @work_detail = WorkDetail.new(params[:work_detail])
     @work_detail.user_id = current_user.id
     @work_detail.business_id = params[:business_id]
@@ -55,6 +56,8 @@ class WorkDetailsController < ApplicationController
   # PATCH/PUT /work_details/1.json
   def update
     params.permit!
+    @work_detail.business_id = params[:business_id]
+    
     respond_to do |format|
       if @work_detail.update(work_detail_params)
         format.html { redirect_to business_path(@work_detail.business_id), notice: 'Work detail was successfully updated.' }
