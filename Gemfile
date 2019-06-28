@@ -34,23 +34,24 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
-gem 'therubyracer'
+#Ransack for filtering
+gem 'ransack', github: 'activerecord-hackery/ransack'
 #For Multiple select choosen-rails
 gem 'chosen-rails'
 
 #for admin section
 gem 'rails_admin', '~> 1.3'
 gem 'devise'
-
+gem 'therubyracer'
+# gem 'execjs'
 
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 # For charts
 gem 'chartkick'
+gem "groupdate", github: "ankane/groupdate", branch: "rails5"
 gem 'highcharts-rails'
-gem 'tar2rubyscript'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

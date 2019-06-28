@@ -1,6 +1,7 @@
 class ActivityDetailsController < ApplicationController
   before_action :set_activity_detail, only: [:show, :edit, :update, :destroy]
 
+
   # GET /activity_details
   # GET /activity_details.json
   def index
@@ -11,6 +12,11 @@ class ActivityDetailsController < ApplicationController
   # GET /activity_details/1.json
   def show
     @activity_detail = ActivityDetail.find(params[:id])
+    # @employee_activitys = @activity_detail.employee_activitys
+    # @team_size = @activity_detail.employees.compact.reject(&''.method(:==))
+    # @emp = Employee.find(@team_size)
+    logger.debug"==================#{@emp.inspect}"
+
     respond_to do |format|
       format.html
       format.json {render :json => @employee}
@@ -19,12 +25,15 @@ class ActivityDetailsController < ApplicationController
 
   # GET /activity_details/new
   def new
-    @activity_detail = ActivityDetail.new
+    @activity_detail = ActivityDetail.new_activity
+    
     @employess = Employee.all
   end
 
   # GET /activity_details/1/edit
   def edit
+      @activity_detail = ActivityDetail.find(params[:id])
+      @employess = Employee.all
   end
 
   # POST /activity_details

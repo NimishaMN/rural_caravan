@@ -11,13 +11,13 @@
   </div>
 
 <div class="field">
-    <%= f.label :select_team, :class=>'control-label-required' %>
-
-    <select class="chosen-select" multiple="true">
-      <%= @employess.each do | emp |%>
-      <option value="<%= emp.id %>"><%= emp.name %></option>
-     <% end %>
-    </select>
+  <%= f.label :select_team, :class=>'control-label-required' %>
+<%= f.select :employees,
+  Employee.all.map { |u| [u.name, u.id] },
+               { include_blank: true },
+                { class: 'chosen-select', 
+                  :multiple => true}
+%>
   </div>
 
   <div class="field">

@@ -40,7 +40,6 @@
                   </a>
                 </div>
               </div>
-              <br>
               <div class="footer">
                 <hr>
                <div class="stats">
@@ -81,7 +80,7 @@
           </div>
           <div class="content">
             <div id="chartPreferences" class="ct-chart ct-perfect-fourth">
-              <%= bar_chart Order.group(:status).order(:order_date).count, ytitle: "Status", xtitle: "Count" %>
+              <%= bar_chart Order.group(:status).count %>
             </div>
             <br/>
             <div class="footer">
