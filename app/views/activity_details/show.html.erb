@@ -30,6 +30,13 @@
 </p>
 <%end%>
 
+<p>
+  <b>Employees: </b>
+  <% @emp.each do |val| %>
+    <%= val.name %> ,
+  <%end%>
+</p>
+
 
 <%= link_to 'Edit', edit_activity_detail_path(@activity_detail) %> |
 

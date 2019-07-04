@@ -12,10 +12,8 @@ class ActivityDetailsController < ApplicationController
   # GET /activity_details/1.json
   def show
     @activity_detail = ActivityDetail.find(params[:id])
-    # @employee_activitys = @activity_detail.employee_activitys
-    # @team_size = @activity_detail.employees.compact.reject(&''.method(:==))
-    # @emp = Employee.find(@team_size)
-    logger.debug"==================#{@emp.inspect}"
+    @team_size = @activity_detail.employees.compact.reject(&''.method(:==))
+    @emp = Employee.find(@team_size)
 
     respond_to do |format|
       format.html

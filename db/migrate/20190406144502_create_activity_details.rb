@@ -7,11 +7,7 @@ class CreateActivityDetails < ActiveRecord::Migration[5.2]
       t.date :end_date
       t.integer :status
       t.string :employees
-      t.integer :user_id, null: false
-      # t.integer :amount_of_work
-    	# t.integer :expense
-    	# t.integer :revenue
-    	# t.integer :income
+      t.integer :user_id
       t.timestamps
     end
   end

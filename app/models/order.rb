@@ -19,7 +19,4 @@ class Order < ApplicationRecord
 		order
 	end
 
-	def get_status
-	    STATUS[status.to_s]
-  	end
 end

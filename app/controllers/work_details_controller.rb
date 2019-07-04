@@ -29,6 +29,7 @@ class WorkDetailsController < ApplicationController
   def edit
     @work_detail = WorkDetail.find(params[:id])
     @business = Business.find(@work_detail.business_id)
+    p @business
     @products = Product.where(business_id: @business.id)
     
    end
@@ -57,6 +58,9 @@ class WorkDetailsController < ApplicationController
   # PATCH/PUT /work_details/1.json
   def update
     params.permit!
+    @business = Business.find(@work_detail.business_id)
+    @products = Product.where(business_id: @business.id)
+
     @work_detail.business_id = params[:business_id]
     
     respond_to do |format|

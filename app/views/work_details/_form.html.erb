@@ -9,10 +9,10 @@
       <section class="panel">
         <div class="panel-body">
           <div class="form-group">
+          <% Rails.logger.debug "----------------------#{@business.inspect}" %>
           <%= hidden_field_tag "[business_id]", @business.id %>
           <div class="field">
-         <%= f.hidden_field :business_id, :value => @business.id %>
-              <%= f.label :product %><br>
+            <%= f.label :product %><br>
             <%= f.select :product_id, options_from_collection_for_select(@products, "id", "name"), html_options = {:class => 'form-control bg-focus', :style=>"width:200px;" } %>
             </div>
             <div class="field">

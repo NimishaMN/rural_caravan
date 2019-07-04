@@ -11,6 +11,8 @@ class EmployeesController < ApplicationController
   # GET /employees/1.json
   def show
     @employee = Employee.find(params[:id])
+    # @activities = ActivityDetail.find(employees: @employee.id)
+    # p @activities
     respond_to do |format|
       format.html
       format.json {render :json => @employee}
