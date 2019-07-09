@@ -29,29 +29,24 @@
       </div>
       <div class="row">
         <div>
-          <p>
-            <b>Products </b>
-            <% @products.each do |product| %>
-              <p><%= product.name %></p>
-              <%= link_to 'Edit', edit_product_path(product.id) %> 
-            <%end%>
-          </p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div>
-          <p>
-            <b>Work detail </b>
-              <% @work_details.each do |work_detail| %>
-                <p><%= work_detail.name %></p>
-                <%= link_to 'Edit', edit_work_detail_path(work_detail.id) %>
-            <% end %> 
-          </p>
-        </div>     
-      </div>
-
-      
+          <% @products.each do |product| %>
+            <table style="border-collapse: collapse; border-spacing: 0;">
+              <tr>
+                <th style="padding: 15px; font: 25px">
+                  <%= link_to product.name, edit_product_path(product.id), {style: 'align: right'} %> 
+                </th>
+              </tr>
+              <% product.work_details.each.with_index(1) do |work_detail,index| %>
+              <tr>
+                <td style="border: 1px solid black; padding: 15px; text-align: center;"><%= index %></td>
+                <td style="border: 1px solid black; padding: 15px"><%= work_detail.name %></td>
+                <td style="border: 1px solid black; padding: 15px"><%= link_to 'Edit',edit_work_detail_path(work_detail.id) %></td>              
+              </tr>
+              <%end%>
+              <tr></br></tr>
+            </table>
+          <%end%>
+                  
 
     </section>
   </section>
