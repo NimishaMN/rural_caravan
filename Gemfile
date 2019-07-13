@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'letter_opener', :group => :development
 
 #Ransack for filtering
 gem 'ransack', github: 'activerecord-hackery/ransack'

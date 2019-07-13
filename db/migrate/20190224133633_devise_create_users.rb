@@ -14,8 +14,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       ## Rememberable
       t.datetime :remember_created_at
       t.string :shg_name, null: false
-      t.date :subscription_start_date
-      t.date :subscription_end_date
+      t.datetime :subscription_start_date
+      t.datetime :subscription_end_date
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
