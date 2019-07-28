@@ -40,9 +40,12 @@
           <td><%= activity_detail.end_date%></td>
           <td><%= activity_detail.status %></td>
         <%else%>
-          <td><%= date_select :end_date, :class => 'form-control bg-focus', :style=>"width:120px;", :id => "start_date" %></td>
-          <td><%= button_to :status, "activity_details/status?id=#{activity_detail.id}" %></td>
-        <%end%>
+          <%= form_with url: status_path do |f| %>
+            <%= hidden_field_tag "activity_detail[id]", activity_detail.id %>
+            <td>In-Progess</td>
+              <td><%= f.button "Complete", method: :status  %></td>
+            <%end%>
+        <% end %>
         <td><%= link_to 'Delete', activity_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

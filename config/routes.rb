@@ -29,7 +29,7 @@ end
   get "orders/add_row"
   resources :orders
   resources :customers
-  post 'activity_details/status'
+  post 'activity_details/status', controller: :activity_details, as: :status
   resources :activity_details
   resources :work_details
   resources :employees
