@@ -38,6 +38,7 @@ class ActivityDetailsController < ApplicationController
   # POST /activity_details.json
   def create
     params.permit!
+    p params[:"start_date(1i)"]
     @activity_detail = ActivityDetail.new(params[:activity_detail])
     @activity_detail.status = 0
     @activity_detail.user_id = current_user.id
@@ -78,8 +79,10 @@ class ActivityDetailsController < ApplicationController
   end
 
   def status
-    @activity_detail = ActivityDetail.find(params[:id])
-    @activity_detail.update_attributes(end_date: params[:end_date], status: 1)
+    params.permit!
+    @activity_detail = ActivityDetail.find(params[:activity_detail][:id])
+    @activity_detail.update_attributes!(end_date: Time.now,status: 1)
+    redirect_to activity_details_path
   end
 
   private
