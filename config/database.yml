@@ -10,8 +10,7 @@ default: &default
   pool: 5
   username: postgres
   password: postgres
-  host: 127.0.0.1
-
+  
 development:
   <<: *default
   database: rural_management
