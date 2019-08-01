@@ -5,20 +5,16 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: mysql2
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
-  username: root
-  password: admin
-  socket:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+  host: 127.0.0.1
 
 development:
   <<: *default
   database: rural_management
-  username: root
-  password: admin 
-  variables:
-    sql_mode: TRADITIONAL
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,10 +24,5 @@ test:
   database: rural_management_test
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
   database: rural_management
-  pool: 25
-  username: root
-  password: admin 
+  
