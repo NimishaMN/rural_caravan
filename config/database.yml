@@ -25,5 +25,5 @@ test:
 
 production:
   <<: *default
-  database: rural_management
+  database: rural_management_production
   
