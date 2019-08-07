@@ -5,8 +5,9 @@ class DashboardController < ApplicationController
   	@businesses = Business.all
   	@work_details = WorkDetail.all
   	@activity_details = ActivityDetail.all
-
-
+    @orders = Order.all
+    @order_status = [['open', Order.where(status: 0).size], ['completed', Order.where(status: 1).size]]
+    
   	@month = Date::MONTHNAMES
     # @months = Date.new(:created_at)
   	@receivables = Income.group(:created_at, :amount).count

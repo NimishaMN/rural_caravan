@@ -97,6 +97,13 @@ class OrdersController < ApplicationController
     
   end
 
+  def order_status
+    params.permit!
+    @order = Order.find(params[:order][:id])
+    @order.update_attributes!(record_date: Time.now,status: 1)
+    redirect_to orders_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order

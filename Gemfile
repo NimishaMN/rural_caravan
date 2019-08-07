@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'instamojo-ruby'
 gem 'letter_opener', :group => :development
 
 #Ransack for filtering

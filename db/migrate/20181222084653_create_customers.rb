@@ -6,6 +6,7 @@ class CreateCustomers < ActiveRecord::Migration[5.2]
 	    t.string :address
 	    t.string :city
 	    t.string :state
+	    t.string :email
 	    t.string :country, default: 'India'
 
 

@@ -137,10 +137,16 @@
    </div>
  </div>
  <%else%>
-                <div class="wrapper">
-                  <%= image_tag("EGramVyapar.png", class: "img-fluid") %>
-                  <%= yield %>
-                </div>
+    <div class="wrapper">
+      <div class="container">
+        <div class="container-fluid">
+           <%= image_tag("EGramVyapar.png", class: "img-fluid", height: '45%', width: '70%') %>
+          <div class="row">
+            <%= yield %>
+          </div>
+        </div>          
+      </div>
+    </div>
   <%end%>
   </body>
 
