@@ -12,7 +12,8 @@ class ActivityDetailsController < ApplicationController
   # GET /activity_details/1.json
   def show
     @activity_detail = ActivityDetail.find(params[:id])
-    @team_size = @activity_detail.employees.compact.reject(&''.method(:==))
+    @team_size = @activity_detail.employee_detail.compact.reject(&''.method(:==))
+    p @team_size.length
     @emp = Employee.find(@team_size)
 
     respond_to do |format|
@@ -40,6 +41,7 @@ class ActivityDetailsController < ApplicationController
     params.permit!
     p params[:"start_date(1i)"]
     @activity_detail = ActivityDetail.new(params[:activity_detail])
+    @activity_detail.status = 0
     @activity_detail.user_id = current_user.id
     respond_to do |format|
       if @activity_detail.save

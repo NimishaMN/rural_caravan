@@ -8,15 +8,22 @@ class DashboardController < ApplicationController
     @orders = Order.all
     @order_status = [['open', Order.where(status: 0).size], ['completed', Order.where(status: 1).size]]
     
-  	@month = Date::MONTHNAMES
-    # @months = Date.new(:created_at)
-  	@receivables = Income.group(:created_at, :amount).count
-  	p @receivables
-  	@payables = Expense.group(:created_at, :amount).count
-  	p @payables
 
+    @receivables = Income.group_by_month(:income_date, format: "%b %Y").sum('amount')
+  	@payables = Expense.group_by_month(:expense_date, format: "%b %Y").sum('amount')
+sum = 0
 
-    @male_employees = ActivityDetail.select("employees").where(created_at: '2019-04-05')
-    @female_employees = Employee.where(gender: 'female')
+    @a = ActivityDetail.where("start_date = ?",Time.now.to_date)
+    @a.each do |a|#ActivityDetail.where(created_at: Time.now).employee_detail
+      @team_size = a.employee_detail.compact.reject(&''.method(:==))
+      @val = @team_size.uniq
+      p @val
+      p sum += @team_size.length
+    end
+    emp = Employee.all.count
+    @male_employees = emp - sum
+    # @male_employees = ActivityDetail.select('employees').where(created_at: Time.now.to_date)
+    p @male_employees
+    @female_employees = Employee.where('gender=? OR gender=?', 'female', 'Female')
   end
 end
