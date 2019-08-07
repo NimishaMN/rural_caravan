@@ -92,6 +92,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_option = {:host => 'https://rural-caravan.herokuapp.com/'}
   config.action_mailer.smtp_settings = {
     :user_name => Rails.application.credentials.send_grid_username,
     :password => Rails.application.credentials.send_grid_password,
