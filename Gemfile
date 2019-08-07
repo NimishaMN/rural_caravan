@@ -51,7 +51,7 @@ gem 'therubyracer'
 gem 'bootsnap', '>= 1.1.0', require: false
 # For charts
 gem 'chartkick'
-gem "groupdate", github: "ankane/groupdate"
+gem 'groupdate'
 gem 'highcharts-rails'
 
 group :development, :test do

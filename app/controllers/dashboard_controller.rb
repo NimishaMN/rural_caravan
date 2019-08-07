@@ -6,18 +6,14 @@ class DashboardController < ApplicationController
   	@work_details = WorkDetail.all
   	@activity_details = ActivityDetail.all
 
-
-  	@month = Date::MONTHNAMES
-    # @months = Date.new(:created_at)
-    @income_month = Income.select("created_at").map{ |i|  Date::MONTHNAMES[i.created_at.month] }.uniq
-    @expense_month = Expense.select("created_at").map{ |i|  Date::MONTHNAMES[i.created_at.month] }.uniq
-  	@receivables = Income.group(:created_at).pluck("sum(amount)").uniq
-  	p @receivables
-  	@payables = Expense.group(:created_at).pluck("sum(amount)").uniq
-  	p @payables
+    @receivables = Income.group_by_month(:income_date, format: "%b %Y").sum('amount')
+  	@payables = Expense.group_by_month(:expense_date, format: "%b %Y").sum('amount')
 
 
-    @male_employees = ActivityDetail.select("employees").where(created_at: '2019-07-13')
-    @female_employees = Employee.where(gender: 'female')
+    @employee = ActivityDetail.all.select { |m| m.employees.present? }
+    p @employees
+    @male_employees = ActivityDetail.select('employees').where(created_at: Time.now)
+    p @male_employees
+    @female_employees = Employee.where('gender=? OR gender=?', 'female', 'Female')
   end
 end

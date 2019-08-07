@@ -2,7 +2,7 @@ class ActivityDetail < ApplicationRecord
 	belongs_to :work_detail, optional: true
 	# belongs_to :employee, optional: true
 	serialize :employees, Array
-	has_many :employee_activity
+	# has_many :employee_activity
 	enum status: {Completed: 1 , Inprogress: 0}
 
 def self.new_activity
