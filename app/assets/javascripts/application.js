@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require rails-ujs
 //= require bootstrap
 //= require chosen-jquery
@@ -19,6 +18,6 @@
 //= require bootstrap-tour.min.js
 //= require activestorage
 //= require turbolinks
+//= require_tree
 //= require Chart.bundle
 //= require chartkick
-//= require_tree
