@@ -1,3 +1,5 @@
+ <%= form_tag "/billing/upgrade" ,:class =>"form-horizontal" do %>
+
  <div class="content">
            <!--  <div class="container-fluid">
                 <div class="row">
@@ -38,7 +40,10 @@
         <div class="panel-footer">
           <h3>₹ 500</h3>
           <h4>per week</h4>
-          <a class= "btn btn-default" href="https://www.instamojo.com/@ruralcaravan/l1802b4e4689a4fc8b1bf148f166a2be9" rel="im-checkout" data-behaviour="remote" data-style="dark" data-text="Pay"></a>
+          <div class="col-lg-9 col-lg-offset-3">                      
+            <input type="submit" value='Proceed to payment' class="btn btn-success"/>
+          </div>
+          <!-- <a class= "btn btn-default" href="https://www.instamojo.com/@ruralcaravan/l1802b4e4689a4fc8b1bf148f166a2be9" rel="im-checkout" data-behaviour="remote" data-style="dark" data-text="Pay"></a> -->
         </div>
       </div>      
     </div>     
@@ -50,7 +55,10 @@
         <div class="panel-footer">
           <h3>₹ 1400</h3>
           <h4>per month</h4>
-         <a class= "btn btn-default" href="https://instamojo.com//@ruralcaravan/l6a80c65345fc4a9784e30247e93a036e" rel="im-checkout" data-behaviour="remote" data-style="dark" data-text="Pay"></a>
+          <div class="col-lg-9 col-lg-offset-3">                      
+            <input type="submit" value='Proceed to payment' class="btn btn-success"/>
+          </div>
+         <!-- <a class= "btn btn-default" href="https://instamojo.com//@ruralcaravan/l6a80c65345fc4a9784e30247e93a036e" rel="im-checkout" data-behaviour="remote" data-style="dark" data-text="Pay"></a> -->
         </div>
       </div>      
     </div> 
@@ -62,14 +70,18 @@
         <div class="panel-footer">
           <h3>₹ 5000</h3>
           <h4>per year</h4>
-          <a class= "btn btn-default" href="https://instamojo.com/@ruralcaravan/l6654f2b2293b43348d315efbd2ce0def" rel="im-checkout" data-behaviour="remote" data-style="dark" data-text="Pay"></a>
+          <div class="col-lg-9 col-lg-offset-3">                      
+            <input type="submit" value='Proceed to payment' class="btn btn-success"/>
+          </div>
+          <!-- <a class= "btn btn-default" href="https://instamojo.com/@ruralcaravan/l6654f2b2293b43348d315efbd2ce0def" rel="im-checkout" data-behaviour="remote" data-style="dark" data-text="Pay"></a> -->
         </div>
       </div>      
     </div>         
   </div>
 </div>
 </div>
-<script src="https://js.instamojo.com/v1/button.js"></script>
+<% end %>
+<!-- <script src="https://js.instamojo.com/v1/button.js"></script> -->
 <style type="text/css">
      .panel {
     border: 1px solid #f4511e; 

@@ -13,16 +13,16 @@
         <div class="row">
           <!-- Invoice second section -->
           <div class="col-sm-5">
-            <h4><strong> Customer Name: </strong> <br/>Vishwajit Kolekar</h4>
+            <h4><strong> Customer Name: </strong> <br/><%= current_user.email %></h4>
          </div>
          <div class="col-sm-7">
           <section class="panel">
             <div class="panel-body">
               <!-- Invoice basic details -->
               <div class="col-sm-6">
-                <p><strong> Invoice Number: </strong>1</p>
-                <p><strong> Company Name: </strong> 2</p>
-                <p><strong> Address: </strong> Kolhapur</p>
+                <p><strong>  </strong>1</p>
+                <p><strong> SHG Name: </strong> <%= current_user.shg_name %> </p>
+                
               </div>
             </div>
             <footer class="panel-footer">
