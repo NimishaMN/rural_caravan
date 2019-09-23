@@ -27,6 +27,7 @@ end
   resources :products
   get "orders/remove_line_item"
   get "orders/add_row"
+  post 'orders/order_status', controller: :orders, as: :order_status
   resources :orders
   resources :customers
   post 'activity_details/status', controller: :activity_details, as: :status

@@ -12,9 +12,9 @@
 
 <div class="field">
   <%= f.label :select_team, :class=>'control-label-required' %>
-<%= f.select :employees,
+<%= f.select :employee_detail,
   Employee.all.map { |u| [u.name, u.id] },
-               { include_blank: true },
+               { },
                 { class: 'chosen-select', 
                   :multiple => true}
 %>

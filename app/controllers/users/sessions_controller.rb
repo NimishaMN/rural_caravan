@@ -2,7 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   before_action :set_route
-  skip_before_filter :user_from_subdomain
+  # skip_before_filter :user_from_subdomain
 
     def new
       self.resource = resource_class.new(sign_in_params)

@@ -20,7 +20,7 @@
       <div class='col-lg-3'>
         <label  class="control-label-required">Customer Name</label>
         <div class='input-group'>
-          <%= f.select(:customer_id, options_from_collection_for_select(@customers, "id", "name", @order.customer_id),{:prompt => 'Type to select'},{:style => "width:200px;"}) %>
+          <%= f.select(:customer_id, options_from_collection_for_select(@customers, "id", "name", @order.customer),{:prompt => 'Type to select'},{:style => "width:200px;"}) %>
          </div>
       </div>
       

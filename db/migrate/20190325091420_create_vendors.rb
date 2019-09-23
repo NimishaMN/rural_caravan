@@ -8,6 +8,7 @@ class CreateVendors < ActiveRecord::Migration[5.2]
 	    t.string :city
 	    t.string :state
 	    t.string :country, default: 'India'
+	    t.references :user
       t.timestamps
     end
   end

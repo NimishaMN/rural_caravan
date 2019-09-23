@@ -16,7 +16,7 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -91,4 +91,25 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = {:host => 'https://rural-caravan.herokuapp.com/'}
+  # config.action_mailer.smtp_settings = {
+  #   :user_name => Rails.application.credentials.send_grid_username,
+  #   :password => Rails.application.credentials.send_grid_password,
+  #   :domain => 'https://rural-caravan.herokuapp.com/',
+  #   :address => 'smtp.sendgrid.net',
+  #   :port => 587,
+  #   :authentication => :plain,
+  #   :enable_starttls_auto => true
+  # }
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+   address: 'smtp.sendgrid.net',
+   port: "25",
+   domain: 'heroku.com',
+   user_name: ENV["SENDGRID_USERNAME"],
+   password: ENV["SENDGRID_PASSWORD"],
+   authentication: 'plain',
+   enable_starttls_auto: true
+  }
 end

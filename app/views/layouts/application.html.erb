@@ -122,8 +122,6 @@
                    </p></a>
                               <ul class="dropdown-menu">
                                 <li><a href="/billings">Subscription</a></li>
-                                <li><a href="#">Settings</a></li>
-                                <li><a href="#">Contact us</a></li>
                                 <li class="divider"></li>
                                 <li>  <a href="#"><%= check_user_sign_in %></a></li>
                               </ul>
@@ -137,10 +135,16 @@
    </div>
  </div>
  <%else%>
-                <div class="wrapper">
-                  <%= image_tag("EGramVyapar.png", class: "img-fluid") %>
-                  <%= yield %>
-                </div>
+    <div class="wrapper">
+      <div class="container">
+        <div class="container-fluid">
+           <%= image_tag("EGramVyapar.png", class: "img-fluid", height: '45%', width: '70%') %>
+          <div class="row">
+            <%= yield %>
+          </div>
+        </div>          
+      </div>
+    </div>
   <%end%>
   </body>
 

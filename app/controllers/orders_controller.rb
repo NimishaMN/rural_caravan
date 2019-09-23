@@ -45,7 +45,6 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     params.permit!
-    p current_user
     @order = Order.new(params[:order])
     @order.user_id = current_user.id
     respond_to do |format|
@@ -95,6 +94,13 @@ class OrdersController < ApplicationController
   end
   def remove_line_item
     
+  end
+
+  def order_status
+    params.permit!
+    @order = Order.find(params[:order][:id])
+    @order.update_attributes!(record_date: Time.now,status: 1)
+    redirect_to orders_path
   end
 
   private
