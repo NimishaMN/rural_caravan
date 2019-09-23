@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post 'sign-in' => 'devise/sessions#create', :as => :user_session
   delete 'sign-out' => 'devise/sessions#destroy', :as => :destroy_user_session
 end
+  post "billings/upgrade"
   resources :billings
   #for user side
   get 'dashboard/index'

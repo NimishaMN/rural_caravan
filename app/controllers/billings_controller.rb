@@ -10,6 +10,7 @@ class BillingsController < ApplicationController
   # GET /billings/1
   # GET /billings/1.json
   def show
+    @gateway = "https://www.instamojo.com/ruralcaravan"
   end
 
   # GET /billings/new
@@ -59,6 +60,19 @@ class BillingsController < ApplicationController
       format.html { redirect_to billings_url, notice: 'Billing was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def upgrade
+    amount = params[:button]
+    if amount == 500 
+      validity = 1.month
+    elsif amount == 1400
+      validity = 3.month
+    elsif amount == 5000
+      validity = 1.year
+    end
+    format.html { redirect_to(:action => :show , :id=> @billing_invoice)}
+        
   end
 
   private

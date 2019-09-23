@@ -52,11 +52,17 @@
         </table>
         <div class="form-group">
           <div class="col-lg-8 col-lg-offset-4">                      
-        <a href="https://test.instamojo.com/@vishukolekar/l991452c21db7494888a716fb0a0e5eaf/" rel="im-checkout" data-behaviour="remote" data-style="dark" data-text="Pay"></a>
-    
-          <a class="btn btn-default" href="/billings">Cancel</a>
-          </div>
-        </div>
+            <%= form_tag "#{@gateway}" do %>
+            <input type="hidden" name="merchantId" value="ruralcaravan"/>
+            <input type="hidden" name="orderAmount" value="<%=@billing_invoice.amount%>"/>
+            <input type="hidden" name="currency" value="INR"/>
+            <input type="hidden" name="merchantTxnId" value="<%= @merchantTxnId%>"/>
+            <input type="hidden" name="secSignature" value="<%= @encryptedVal%>"/>
+            <input type="hidden" name="returnUrl" value="<%=@responseURL%>"/>
+            <input type="hidden" name="email" value="<%= @current_user.email%>" />
+            <input type="submit" value="Proceed to payment" name="submit" class = "btn btn-success" />
+            <a href="/billing/index" class="btn btn-white">Cancel</a>
+            <% end %> 
       </div>
     </div>
   </section>
