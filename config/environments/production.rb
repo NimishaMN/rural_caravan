@@ -103,6 +103,7 @@ Rails.application.configure do
   #   :enable_starttls_auto => true
   # }
   ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.default_options = { from: 'nimisha.mn@gmail.com' }
   ActionMailer::Base.smtp_settings = {
    address: 'smtp.sendgrid.net',
    port: "25",
