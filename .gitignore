@@ -31,4 +31,4 @@
 /config/master.key
 
 # Ignore secrets.yml file
-/config/secrets.yml
+/config/application.yml
