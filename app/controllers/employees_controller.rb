@@ -4,7 +4,7 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all.order("name DESC")
+    @employees = Employee.where(user_id: current_user.id).order("name DESC")
   end
 
   # GET /employees/1

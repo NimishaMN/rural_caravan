@@ -4,7 +4,7 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = Expense.all
+    @expenses = Expense.where(user_id: current_user.id)
   end
 
   # GET /expenses/1
@@ -16,13 +16,13 @@ class ExpensesController < ApplicationController
   # GET /expenses/new
   def new
     @expense = Expense.new
-    @vendor = Vendor.all
+    @vendor = Vendor.where(user_id: current_user.id)
   end
 
   # GET /expenses/1/edit
   def edit
     @expense = Expense.find(params[:id])
-    @vendor = Vendor.all
+    @vendor = Vendor.where(user_id: current_user.id)
     p @vendor
   end
 
@@ -48,14 +48,14 @@ class ExpensesController < ApplicationController
   # PATCH/PUT /expenses/1.json
   def update
     params.permit!
-    @vendor = Vendor.all
+    @vendor = Vendor.where(user_id: current_user.id)
     p @expense
     respond_to do |format|
       if @expense.update(params[:expense])
         format.html { redirect_to @expense, notice: 'Expense was successfully updated.' }
         format.json { render :show, status: :ok, location: @expense }
       else
-        @vendor = Vendor.all
+        @vendor = Vendor.where(user_id: current_user.id)
         format.html { render :edit }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
       end

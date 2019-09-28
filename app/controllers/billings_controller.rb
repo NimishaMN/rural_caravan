@@ -4,7 +4,7 @@ class BillingsController < ApplicationController
   # GET /billings
   # GET /billings.json
   def index
-    @billings = Billing.all
+    @billings = Billing.where(user_id: current_user.id)
   end
 
   # GET /billings/1

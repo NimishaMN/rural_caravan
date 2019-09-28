@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
       @orders = @q.result
     else  
 
-      @orders = Order.all.page(params[:page]).per(100)
+      @orders = Order.where(user_id: current_user.id).page(params[:page]).per(100)
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -30,15 +30,15 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @customers = Customer.all
+    @customers = Customer.where(user_id: current_user.id)
     @order = Order.new_orders(params)
-    @products = Product.all
+    @products = Product.where(user_id: current_user.id)
   end
 
   # GET /orders/1/edit
   def edit
-    @customers = Customer.all
-    @products = Product.all
+    @customers = Customer.where(user_id: current_user.id)
+    @products = Product.where(user_id: current_user.id)
   end
 
   # POST /orders
@@ -87,7 +87,7 @@ class OrdersController < ApplicationController
 
   def add_row
     @order_line_item = OrderLineItem.new
-    @products = Product.all
+    @products = Product.where(user_id: current_user.id)
     respond_to do |format|
       format.js
     end

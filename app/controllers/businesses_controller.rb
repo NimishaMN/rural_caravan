@@ -4,7 +4,7 @@ class BusinessesController < ApplicationController
   # GET /businesses
   # GET /businesses.json
   def index
-    @businesses = Business.all
+    @businesses = Business.where(user_id: current_user.id)
   end
 
   # GET /businesses/1
@@ -19,7 +19,7 @@ class BusinessesController < ApplicationController
   # GET /businesses/new
   def new
     @business = Business.new
-    @products = Product.all
+    @products = Product.where(user_id: current_user.id)
   end
 
   # GET /businesses/1/edit

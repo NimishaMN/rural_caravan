@@ -4,7 +4,7 @@ class WorkDetailsController < ApplicationController
   # GET /work_details
   # GET /work_details.json
   def index
-    @work_details = WorkDetail.all
+    @work_details = WorkDetail.where(user_id: current_user.id)
   end
 
   # GET /work_details/1
@@ -19,7 +19,7 @@ class WorkDetailsController < ApplicationController
 
   # GET /work_details/new
   def new
-    @product = Product.all
+    @product = Product.where(user_id: current_user.id)
     @business = Business.find(params[:business_id])
     @products = Product.where(business_id: @business.id)
     @work_detail = WorkDetail.new
