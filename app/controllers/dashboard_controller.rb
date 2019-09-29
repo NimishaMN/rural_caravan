@@ -1,16 +1,17 @@
 class DashboardController < ApplicationController
   def index
   	
-  	@employees = Employee.all
-  	@businesses = Business.all
-  	@work_details = WorkDetail.all
-  	@activity_details = ActivityDetail.all
-    @orders = Order.all
-    @order_status = [['open', Order.where(status: 0).size], ['completed', Order.where(status: 1).size]]
+  	@employees = Employee.where(user_id: current_user.id)
+  	@businesses = Business.where(user_id: current_user.id)
+  	@work_details = WorkDetail.where(user_id: current_user.id)
+  	@activity_details = ActivityDetail.where(user_id: current_user.id)
+    @orders = Order.where(user_id: current_user.id)
+    @order_status = [['open', Order.where(status: 0,user_id: current_user.id).size], ['completed', Order.where(status: 1, user_id: current_user.id).size]]
     
-
-    @receivables = Income.group_by_month(:income_date, format: "%b %Y").sum('amount')
-  	@payables = Expense.group_by_month(:expense_date, format: "%b %Y").sum('amount')
+    @incomes = Income.where(user_id: current_user.id)
+    @expenses = Expense.where(user_id: current_user.id)
+    @receivables = @incomes.group_by_month(:income_date, format: "%b %Y").sum('amount')
+  	@payables = @expenses.group_by_month(:expense_date, format: "%b %Y").sum('amount')
 sum = 0
 
     @a = ActivityDetail.where("start_date = ?",Time.now.to_date)
@@ -20,10 +21,10 @@ sum = 0
       p @val
       p sum += @team_size.length
     end
-    emp = Employee.all.count
+    emp = @employees.count
     @male_employees = emp - sum
     # @male_employees = ActivityDetail.select('employees').where(created_at: Time.now.to_date)
     p @male_employees
-    @female_employees = Employee.where('gender=? OR gender=?', 'female', 'Female')
+    @female_employees = @employees.where('gender=? OR gender=?', 'female', 'Female')
   end
 end

@@ -4,7 +4,7 @@ class VendorsController < ApplicationController
   # GET /vendors
   # GET /vendors.json
   def index
-    @vendors = Vendor.all
+    @vendors = Vendor.where(user_id: current_user.id)
   end
 
   # GET /vendors/1
@@ -58,10 +58,19 @@ class VendorsController < ApplicationController
   # DELETE /vendors/1
   # DELETE /vendors/1.json
   def destroy
-    @vendor.destroy
-    respond_to do |format|
-      format.html { redirect_to vendors_url, notice: 'Vendor was successfully destroyed.' }
-      format.json { head :no_content }
+    @expenses = Expense.where(vendor_id: @vendor.id)
+    if @expenses.present?
+      flash[:error] = 'Expense is present under the vendors name. Please delete the expenses to delete the vendor.' 
+      respond_to do |format|
+        format.html { redirect_to vendors_url}
+        format.json { head :no_content }
+      end
+    else
+      @vendor.destroy
+      respond_to do |format|
+        format.html { redirect_to vendors_url, notice: 'Vendor was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

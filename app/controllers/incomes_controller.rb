@@ -4,7 +4,7 @@ class IncomesController < ApplicationController
   # GET /incomes
   # GET /incomes.json
   def index
-    @incomes = Income.all
+    @incomes = Income.where(user_id: current_user.id)
   end
 
   # GET /incomes/1
@@ -16,12 +16,12 @@ class IncomesController < ApplicationController
   # GET /incomes/new
   def new
     @income = Income.new
-    @customer = Customer.all
+    @customer = Customer.where(user_id: current_user.id)
   end
 
   # GET /incomes/1/edit
   def edit
-    @customer = Customer.all
+    @customer = Customer.where(user_id: current_user.id)
   end
 
   # POST /incomes

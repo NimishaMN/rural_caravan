@@ -5,7 +5,7 @@ class ActivityDetailsController < ApplicationController
   # GET /activity_details
   # GET /activity_details.json
   def index
-    @activity_details = ActivityDetail.all
+    @activity_details = ActivityDetail.where(user_id: current_user.id)
   end
 
   # GET /activity_details/1

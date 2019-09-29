@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    @customers = Customer.where(user_id: current_user.id)
   end
 
   # GET /customers/1
@@ -61,10 +61,26 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
-    @customer.destroy
-    respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
-      format.json { head :no_content }
+    @orders = Order.where(customer_id: @customer.id)
+    if @orders.present?
+      flash[:error] = 'Order is present under the customers name. Please delete the orders to delete the customer.' 
+      respond_to do |format|
+        format.html { redirect_to customers_url}
+        format.json { head :no_content }
+      end
+    @incomes = Income.where(customer_id: @customer.id)
+    elsif @incomes.present?
+      flash[:error] = 'Income is present under the customers name. Please delete the incomes to delete the customer.' 
+      respond_to do |format|
+        format.html { redirect_to customers_url}
+        format.json { head :no_content }
+      end
+    else
+      @customer.destroy
+      respond_to do |format|
+        format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
