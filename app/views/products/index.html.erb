@@ -8,7 +8,7 @@
         </div>
         <div class="col-lg-8 m-t-large" align="right">
           <div class="btn-group">
-            <button  onclick="location.href= '<%= new_product_path %>'"; class="btn btn-success btn-lg" > <i class="icon-plus"> </i>Add New Product</button>
+            <button  onclick="location.href= '<%= new_product_path %>'"; class="btn btn-success btn-lg"; disabled = "current_user.subscription_end_date.present?" > <i class="icon-plus"> </i>Add New Product</button>
          </div>
         </div>
       </div>

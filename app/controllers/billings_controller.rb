@@ -11,6 +11,9 @@ class BillingsController < ApplicationController
   # GET /billings/1.json
   def show
     @gateway = "https://www.instamojo.com/ruralcaravan"
+    @sequence = Subscription.last
+    @merchantTxnId = Date.today.to_s(:number)+ pad_sequence(@sequence.id)
+    @return_url = 'http://www.egramvyapar.com/billings' if Rails.env.production?
   end
 
   # GET /billings/new
@@ -63,7 +66,7 @@ class BillingsController < ApplicationController
   end
 
   def upgrade
-    amount = params[:button]
+    amount = params[:button].to_i
     if amount == 500 
       validity = 1.month
     elsif amount == 1400
@@ -71,7 +74,13 @@ class BillingsController < ApplicationController
     elsif amount == 5000
       validity = 1.year
     end
-    format.html { redirect_to(:action => :show , :id=> @billing_invoice)}
+    p amount
+    p validity
+    @subscription = Subscription.new(
+                        :user_id => current_user.id,
+                        :amount => amount,
+                        :validity => validity)
+    format.html { redirect_to(:action => :show , :id=> @subscription)}
         
   end
 
@@ -84,5 +93,15 @@ class BillingsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def billing_params
       params.fetch(:billing, {})
+    end
+
+    def pad_sequence(seq)
+      if seq < 10
+        "00"+seq.to_s
+      elsif seq >= 10 and seq < 100
+        "0"+ seq.to_s
+      else
+        seq.to_s
+      end
     end
 end
