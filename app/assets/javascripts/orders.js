@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function (){
+$(document).ready(function(){
 
   $('body').on('change','table#order_line_items input:text', function(e){
       cal();
