@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
 
   <body>
@@ -138,16 +138,17 @@
     <div class="wrapper">
       <div class="container">
         <div class="container-fluid">
-           <%= image_tag("EGramVyapar.png", class: "img-fluid", height: '45%', width: '70%') %>
+        <table>
+          <td width="70%"><%= image_tag("EGramVyapar.png", class: "img-fluid", height: '45%', width: '100%') %></td>
+          <td width="30%"><%= yield %></td>
+        </table>
+           <!-- 
           <div class="row">
-            <%= yield %>
-          </div>
+            
+          </div> -->
         </div>          
       </div>
     </div>
   <%end%>
   </body>
-
-  <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
 </html>
