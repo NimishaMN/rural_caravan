@@ -10,12 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(user_params)
     p @user
     @user.subscription_start_date = Time.now.to_date
-    @user.subscription_end_date = 30.days.from_now
-    if @user.save
-      redirect_to :action => :new
-    else
-      render 'new'
-    end
+    @user.subscription_end_date = @user.subscription_start_date + 30.days
+    @user.save
+    render 'new'
   end  
 
   private
