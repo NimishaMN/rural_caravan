@@ -100,7 +100,8 @@ class OrdersController < ApplicationController
     params.permit!
     @order = Order.find(params[:order][:id])
     @order.update_attributes!(record_date: Time.now,status: 1)
-    redirect_to orders_path
+    # redirect_to orders_path
+    redirect_back(fallback_location: orders_path)
   end
 
   private

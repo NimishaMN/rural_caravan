@@ -6,6 +6,7 @@ class ActivityDetailsController < ApplicationController
   # GET /activity_details.json
   def index
     @activity_details = ActivityDetail.where(user_id: current_user.id)
+    # redirect_back(fallback_location: activity_details_path)
   end
 
   # GET /activity_details/1
@@ -80,10 +81,12 @@ class ActivityDetailsController < ApplicationController
   end
 
   def status
+    # binding.pry
     params.permit!
     @activity_detail = ActivityDetail.find(params[:activity_detail][:id])
     @activity_detail.update_attributes!(end_date: Time.now,status: 1)
-    redirect_to activity_details_path
+    # redirect_to activity_details_url
+    redirect_back(fallback_location: activity_details_path)
   end
 
   private
