@@ -1,5 +1,5 @@
 class Integration
-	extend Instamojo::ApiHelper
+	# extend Instamojo::ApiHelper
 
   def self.host
     "#{Integration.domain}"
