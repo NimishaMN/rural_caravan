@@ -26,7 +26,11 @@
       <div class="middle">
         <div class="text">
         <% if @male_employees.present? %>
-          <h1><%= @male_employees %></h1>
+          <% if @male_employees < 0 %>
+            <h1>0</h1>
+          <%else%>
+            <h1><%= @male_employees %></h1>
+          <%end%>
         <%else%>
           <h1><%= Employee.count %></h1>
         <%end%>
