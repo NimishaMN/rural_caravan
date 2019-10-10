@@ -10,7 +10,7 @@ class Integration
   end
 
   def headers
-    header = {"X-Api-Key" => "8fb2f2cfa390f91a2521b96180f0b61a" , "X-Auth-key" => "8fb2f2cfa390f91a2521b96180f0b61a"}
+    header = {"X-Api-Key" => "" , "X-Auth-key" => ""}
   end
 
   def payment_request(method = "payment-requests/", body)
