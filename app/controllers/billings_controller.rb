@@ -1,4 +1,5 @@
 class BillingsController < ApplicationController
+  # require "integration"
   #before_action :set_billing, only: [:show, :edit, :update, :destroy]
 
   # GET /billings
@@ -76,12 +77,29 @@ class BillingsController < ApplicationController
     end
     p amount
     p validity
-    @instamojo = Instapayload.new(current_user,amount)
+
+    error = []
+    # user = #get user
+    request_json = {
+    "email" => current_user.email,
+    "buyer_name" => current_user.email ,
+    "phone" => "9890060986" ,
+    "amount" => amount
+    }
+    intergration_object = Integration.new()
+    begin
+      payload = Instamojo::InstaPayload.new(request_json)
+      payload_hash = payload.get_payload #change the name of def in instapayload
+      response = intergration_object.payment_request(request_json)
+    rescue Exception => e
+      error << e.message
+    end
+
     # @subscription = Subscription.new(
     #                     :user_id => current_user.id,
     #                     :amount => amount,
     #                     :validity => validity)
-    format.html { redirect_to(:action => :show , :id=> @subscription)}
+    # format.html { redirect_to(:action => :show , :id=> @subscription)}
         
   end
 

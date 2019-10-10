@@ -6,7 +6,7 @@ module Instamojo
     @user = request_json[:user]
     end
 
-    def payload
+    def get_payload
     {
       "purpose" : "Subscription",
       "amount": @user.amount,
