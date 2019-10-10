@@ -76,10 +76,11 @@ class BillingsController < ApplicationController
     end
     p amount
     p validity
-    @subscription = Subscription.new(
-                        :user_id => current_user.id,
-                        :amount => amount,
-                        :validity => validity)
+    @instamojo = Instapayload.new(current_user,amount)
+    # @subscription = Subscription.new(
+    #                     :user_id => current_user.id,
+    #                     :amount => amount,
+    #                     :validity => validity)
     format.html { redirect_to(:action => :show , :id=> @subscription)}
         
   end
