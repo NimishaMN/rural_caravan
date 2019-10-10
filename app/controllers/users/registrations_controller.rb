@@ -9,9 +9,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
     p @user
-    @user.subscription_start_date = Time.now.to_date
-    @user.subscription_end_date = @user.subscription_start_date + 30.days
-    @user.save
+    # @user.subscription_start_date = Time.now.to_date
+    # @user.subscription_end_date = @user.subscription_start_date + 30.days
+    # @user.save
     render 'new'
   end  
 
