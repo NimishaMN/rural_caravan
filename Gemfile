@@ -42,7 +42,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'chosen-rails'
 
 #for admin section
-gem 'rails_admin', '~> 1.3'
+gem 'rails_admin', '~> 2.0'
 gem 'devise'
 gem 'therubyracer'
 gem 'figaro'
