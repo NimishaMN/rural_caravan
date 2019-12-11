@@ -25,7 +25,7 @@
               <div class="col-sm-2">
                 <div class="input-group">
                   <label>Customer</label>
-                  <%= f.collection_select(:customer_id_eq, Customer.all, :id, :name, {prompt: "Select Customer"} ) %>
+                  <%= f.collection_select(:customer_id_eq, Customer.where(user_id: current_user.id), :id, :name, {prompt: "Select Customer"} ) %>
                 </div>
               </div>
             </div>
