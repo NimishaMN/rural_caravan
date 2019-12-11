@@ -7,13 +7,13 @@
   
   <div class="field">
     <%= f.label :work_detail, :class=>'control-label' %><br>
-    <%= f.collection_select :work_detail_id, WorkDetail.order(:name), :id,:name, :class => 'form-control bg-focus', :style=>"width:'300px';" %>
+    <%= f.collection_select :work_detail_id, WorkDetail.where(user_id: current_user.id).order(:name), :id,:name, :class => 'form-control bg-focus', :style=>"width:'300px';" %>
   </div>
 
 <div class="field">
   <%= f.label :select_team, :class=>'control-label-required' %>
 <%= f.select :employee_detail,
-  Employee.all.map { |u| [u.name, u.id] },
+  Employee.where(user_id: current_user.id).map { |u| [u.name, u.id] },
                { },
                 { class: 'chosen-select', 
                   :multiple => true}
