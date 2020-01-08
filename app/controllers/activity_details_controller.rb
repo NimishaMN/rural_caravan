@@ -27,13 +27,13 @@ class ActivityDetailsController < ApplicationController
   def new
     @activity_detail = ActivityDetail.new_activity
     
-    @employess = Employee.all
+    @employess = Employee.where(user_id: current_user.id)
   end
 
   # GET /activity_details/1/edit
   def edit
       @activity_detail = ActivityDetail.find(params[:id])
-      @employess = Employee.all
+      @employess = Employee.where(user_id: current_user.id)
   end
 
   # POST /activity_details

@@ -7,11 +7,11 @@
         </div>
         <div class="col-lg-5 m-t-large" align="right">
           <div class="btn-group">
-            <button  onclick="location.href= '<%= new_product_path(business_id: @business.id) %>'"; class="btn btn-success btn-lg"; disabled = "current_user.subscription_end_date.present?" > <i class="icon-plus"> </i>Add New Product</button>
+            <button  onclick="location.href= '<%= new_product_path(business_id: @business.id) %>'"; class="btn btn-success btn-lg" > <i class="icon-plus"> </i>Add New Product</button>
           </div>
 
           <div class="btn-group">
-            <button  onclick="location.href= '<%= new_work_detail_path(business_id: @business.id) %>'"; class="btn btn-success btn-lg"; disabled = "current_user.subscription_end_date.present?" > <i class="icon-plus"> </i>Add New Work</button>            
+            <button  onclick="location.href= '<%= new_work_detail_path(business_id: @business.id) %>'"; class="btn btn-success btn-lg" > <i class="icon-plus"> </i>Add New Work</button>            
           </div>
           
           <div class="btn-group">

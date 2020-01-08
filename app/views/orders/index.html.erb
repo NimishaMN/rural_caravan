@@ -7,7 +7,7 @@
         </div>
         <div class="col-lg-8 m-t-large" align="right">
           <div class="btn-group">
-            <button  onclick="location.href= '<%= new_order_path %>'"; class="btn btn-success btn-lg"; disabled = "current_user.subscription_end_date.present?" > <i class="icon-plus"> </i>Add New Order</button>
+            <button  onclick="location.href= '<%= new_order_path %>'"; class="btn btn-success btn-lg" > <i class="icon-plus"> </i>Add New Order</button>
             </button>
          </div>
         </div>
@@ -25,7 +25,7 @@
               <div class="col-sm-2">
                 <div class="input-group">
                   <label>Customer</label>
-                  <%= f.collection_select(:customer_id_eq, Customer.all, :id, :name, {prompt: "Select Customer"} ) %>
+                  <%= f.collection_select(:customer_id_eq, Customer.where(user_id: current_user.id), :id, :name, {prompt: "Select Customer"} ) %>
                 </div>
               </div>
             </div>
