@@ -116,10 +116,16 @@
       <div class="wrapper">
         <div class="container">
           <div class="container-fluid">
-          <table>
-            <td width="70%"><%= image_tag("EGramVyapar.png", class: "img-fluid", height: '45%', width: '100%') %></td>
-            <td width="30%"><%= yield %></td>
-          </table>
+          <div class="row">
+          <div class="col-lg-6">
+            <%= image_tag("EGramVyapar.png", class: "img-fluid", height: '45%', width: '100%') %>
+          </div>
+          <div class="col-lg-6"  align="center">
+            <%= yield %>
+          </div>
+            <!-- <td width="70%"></td>
+            <td width="30%"></td> -->
+          </div>
              <!-- 
             <div class="row">
               

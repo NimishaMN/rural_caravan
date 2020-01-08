@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
       @orders = @q.result
     else  
 
-      @orders = Order.where(user_id: current_user.id).page(params[:page]).per(100)
+      @orders = Order.where(user_id: current_user.id).order(:status)#.page(params[:page]).per(100)
     end
     respond_to do |format|
       format.html # index.html.erb
