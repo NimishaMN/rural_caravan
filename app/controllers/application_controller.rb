@@ -22,7 +22,10 @@ class ApplicationController < ActionController::Base
       else
         "/billings"
       end
-  	end
+  	elsif current_admin
+      "/admin/dashboard"
+    end
+
   end
 
   def user_from_subdomain

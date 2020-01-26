@@ -12,19 +12,24 @@ class DashboardController < ApplicationController
     @expenses = Expense.where(user_id: current_user.id)
     @receivables = @incomes.group_by_month(:income_date, format: "%b %Y").sum('amount')
   	@payables = @expenses.group_by_month(:expense_date, format: "%b %Y").sum('amount')
-sum = 0
+    
+    sum = 0
 
     @a = ActivityDetail.where("start_date = ?",Time.now.to_date)
+    p "a  #{@a.inspect}"
     @a.each do |a|#ActivityDetail.where(created_at: Time.now).employee_detail
       @team_size = a.employee_detail.compact.reject(&''.method(:==))
+      p "team_size #{@team_size}"
       @val = @team_size.uniq
-      p @val
-      p sum += @team_size.length
+      p " val #{@val}"
+      sum += @team_size.length
+      p "sum #{sum}"
     end
     emp = @employees.count
+    p "emp #{emp}"
     @male_employees = emp - sum
     # @male_employees = ActivityDetail.select('employees').where(created_at: Time.now.to_date)
-    p @male_employees
+    p "male  #{@male_employees}"
     @female_employees = @employees.where('gender=? OR gender=?', 'female', 'Female')
   end
 end
