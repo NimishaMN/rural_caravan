@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   #   sign_out: 'logout', password: 'secret', confirmation: 'verification',
   #   unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }, as: ''
 
+ # admin side paths
+  # devise_for :admins
+
+
+#user side paths
+
   devise_for :users, :skip => [:sessions]
     as :user do
   get 'sign-in' => 'devise/sessions#new', :as => :new_user_session

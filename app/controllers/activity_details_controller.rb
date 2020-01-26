@@ -5,7 +5,7 @@ class ActivityDetailsController < ApplicationController
   # GET /activity_details
   # GET /activity_details.json
   def index
-    @activity_details = ActivityDetail.where(user_id: current_user.id)
+    @activity_details = ActivityDetail.where(user_id: current_user.id).order(status: :asc,start_date: :desc)
     # redirect_back(fallback_location: activity_details_path)
   end
 
