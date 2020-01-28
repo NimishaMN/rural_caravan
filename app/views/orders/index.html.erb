@@ -60,7 +60,7 @@
                             <tr>
                               <td><%= order.order_date%></td>
                               <td><%= order.order_number%></td>          
-                              <td><%= order.customer.name%></td>
+                              <td><%= (order.customer.name rescue nil)%></td>
                               <% if order.status == "Completed" %>
                                 <td><%= order.record_date%></td>
                                 <td><%= order.status %></td>
