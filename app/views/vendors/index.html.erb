@@ -38,7 +38,7 @@
                       <% else %>
                         <% @vendors.each do |vendor| %>
                           <tr>
-                            <td><%= vendor.name %></td>
+                            <td><%= (vendor.name rescue nil) %></td>
                             <td><%= vendor.phone_number %></td>
                             <td><%= link_to 'Show', vendor %></td>
                             <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>

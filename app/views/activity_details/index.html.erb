@@ -34,7 +34,7 @@
                       <% else %>
                         <% @activity_details.each do |activity_detail| %>
                           <tr>
-                            <td><%= link_to activity_detail.work_detail.name, activity_detail%></td>
+                            <td><%= link_to (activity_detail.work_detail.name rescue nil), activity_detail%></td>
                             <td><%= activity_detail.start_date%></td>
                             <% if activity_detail.status == "Completed" %>
                               <td><%= activity_detail.end_date%></td>

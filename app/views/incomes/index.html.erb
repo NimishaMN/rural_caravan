@@ -38,7 +38,7 @@
 
     <% @incomes.each do |income| %>
       <tr>
-        <td><%= income.customer.name%></td>
+        <td><%= (income.customer.name rescue nil)%></td>
         <td><%= income.amount%></td>
         <td><%= income.income_date%></td>
         <td><%= link_to 'Show', income %></td>

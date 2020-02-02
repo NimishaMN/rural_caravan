@@ -3,7 +3,7 @@
   <section class="main padder">
     <div class="row">
       <div class="col-lg-7">
-        <h2><span class="glyphicon glyphicon-user"></span> <%= @work_detail.name %></h2>
+        <h2><span class="glyphicon glyphicon-user"></span> <%= (@work_detail.name rescue nil) %></h2>
       </div>
       <div class="col-lg-5 m-t-large" align="right">
         <%= link_to raw("<i class='icon-mail-reply'></i>Back"), businesses_url, :class=>'btn  btn-default btn-lg' %>

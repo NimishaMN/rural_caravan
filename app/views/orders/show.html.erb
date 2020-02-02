@@ -61,7 +61,7 @@
              
                 <% @order_line_items.each do |item|%>
                   <tr>
-                    <td><%= item.product.name %></td>
+                    <td><%= (item.product.name rescue nil) %></td>
                     <td><%= item.description %></td>
                     <td class="text-right"><%= item.quantity %></td>
                     <td class="text-right"><%= item.unit_rate %></td>

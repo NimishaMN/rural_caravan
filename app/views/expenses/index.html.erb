@@ -37,7 +37,7 @@
 
     <% @expenses.each do |expense| %>
       <tr>
-        <td><%= expense.vendor.name%></td>
+        <td><%= (expense.vendor.name rescue nil)%></td>
         <td><%= expense.amount%></td>
         <td><%= expense.expense_date%></td>
         <td><%= link_to 'Show', expense %></td>
