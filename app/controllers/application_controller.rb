@@ -13,15 +13,15 @@ class ApplicationController < ActionController::Base
   private
   def after_sign_in_path_for(resource)
   	if current_user
-      if current_user.subscription_end_date.present?
-        if current_user.subscription_end_date < Time.now.to_date
-          "/billings"
-        else
+      # if current_user.subscription_end_date.present?
+      #   if current_user.subscription_end_date < Time.now.to_date
+      #     "/billings"
+      #   else
   		    "/dashboard/index"
-        end
-      else
-        "/billings"
-      end
+      #   end
+      # else
+      #   "/billings"
+      # end
   	elsif current_admin
       "/admin/dashboard"
     end
